@@ -8095,7 +8095,8 @@ body.boxed .hero-carousel .flex-direction-nav .flex-next {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    *zoom: 1; }
+    *zoom: 1;
+    background-color: #fff;}
   .hero-carousel p {
     margin: 0; }
   .hero-carousel .big, .hero-carousel .carousel-blur .normal, .carousel-blur .hero-carousel .normal, .hero-carousel .carousel-image .normal, .carousel-image .hero-carousel .normal {
@@ -8384,14 +8385,14 @@ body.boxed .hero-carousel .flex-direction-nav .flex-next {
     content: "\f054";
     font-size: 26px; }
 .carousel-contrast-arrows .flex-direction-nav .flex-prev {
-  left: -30px; }
+  left: 30px; }
   @media (min-width: 992px) and (max-width: 1199px) {
     .carousel-contrast-arrows .flex-direction-nav .flex-prev {
       left: 0px; } }
   .carousel-contrast-arrows .flex-direction-nav .flex-prev:before {
     content: "\f053"; }
 .carousel-contrast-arrows .flex-direction-nav .flex-next {
-  right: -30px; }
+  right: 30px; }
   @media (min-width: 992px) and (max-width: 1199px) {
     .carousel-contrast-arrows .flex-direction-nav .flex-next {
       right: 0px; } }

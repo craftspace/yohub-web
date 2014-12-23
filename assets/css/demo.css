@@ -96,16 +96,21 @@ body.error-page, body.countdown-page {
   margin-top: -20px;
 }
 
+.hero-carousel .slides .item {
+  background-color: #fff;
+  background-repeat: no-repeat;
+}
+
 .hero-carousel .forest {
-  background: url("../images/demo/carousels/forest.jpg") center;
+  background: url("../images/1_tiny_.png") center 100px;
 }
 
 .hero-carousel .sea {
-  background-image: url("../images/demo/carousels/sea.jpg");
+  background: url("../images/2_tiny_.png") center 100px;
 }
 
 .hero-carousel .bokeh {
-  background: url("../images/demo/carousels/bokeh.jpg") center;
+  background: url("../images/3_tiny_.png") center 100px;
 }
 
 #header .navbar-default.navbar-collapsed-sm .navbar-nav > li > a span {
