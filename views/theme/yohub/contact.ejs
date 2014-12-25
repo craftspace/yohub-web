@@ -1,0 +1,120 @@
+<body class="contact-page">
+  <div id="wrapper">
+    <div id="main" role="main">
+      <div id="main-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="page-header page-header-with-icon">
+                <i class="fa fa-map-marker"></i>
+                <h2>
+                  公司地址
+                </h2>
+              </div>
+              <div class="map-container">
+                <div id="map-canvas" style="position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="page-header page-header-with-icon">
+                <i class="fa fa-info-circle"></i>
+                <h2>
+                  联系方式
+                </h2>
+              </div>
+              <div class="row text-center">
+                <div class="col-sm-3">
+                  <div class="icon-wrap icon-circle contrast-bg icon-md">
+                    <i class="fa fa-map-marker text-white"></i>
+                  </div>
+                  <h3>地址</h3>
+                  <ul class="list-unstyled">
+                    <li>中国上海市徐汇区肇家浜路807号五洲国际大厦20C</li>
+                  </ul>
+                </div>
+                <div class="col-sm-3">
+                  <div class="icon-wrap icon-circle contrast-bg icon-md">
+                    <i class="fa fa-phone text-white"></i>
+                  </div>
+                  <h3>电话</h3>
+                  <ul class="list-unstyled">
+                    <li><a href="tel:+8602164286057">+86 21 6428 6057</a></li>
+                    <li><a href="tel:+8613524807676">+86 135 2480 7676</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3">
+                  <div class="icon-wrap icon-circle contrast-bg icon-md">
+                    <i class="fa fa-envelope-o text-white"></i>
+                  </div>
+                  <h3>电子邮件</h3>
+                  <ul class="list-unstyled">
+                    <li><a href="mailto:iven.zhang@yohub.com.cn">iven.zhang@yohub.com.cn</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3">
+                  <div class="icon-wrap icon-circle contrast-bg icon-md">
+                    <i class="fa fa-clock-o text-white"></i>
+                  </div>
+                  <h3>办公时间</h3>
+                  <ul class="list-unstyled">
+                    <li>
+                      (BJ Time) Mon - Fri : 9:00am - 6:00pm
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+              <div class="page-header page-header-with-icon">
+                <i class="fa fa-envelope"></i>
+                <h2>填写表单</h2>
+              </div>
+              <form class="form form-validation form-contact" method="post" novalidate="novalidate">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="alert alert-success form-contact-success hidden">Thanks! Your message has been successfully sent!</div>
+                    <div class="alert alert-danger form-contact-error hidden">Ooops! There was an error sending your message.</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group control-group">
+                      <input class="form-control" data-rule-required="true" name="name" placeholder="用户名" type="text">
+                      <!-- / this field is required for simple anti spam function, don"t remove it! -->
+                      <input class="form-control" name="human" placeholder="Are you human?" style="display: none;" type="text">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group control-group">
+                      <input class="form-control" data-rule-email="true" data-rule-required="true" name="email" placeholder="电子邮件" type="email">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group control-group">
+                      <textarea class="form-control" data-rule-required="true" name="message" placeholder="说点什么吧..."></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <button class="btn btn-contrast btn-block form-contact-submit" data-loading-text="&lt;i class=&#39;fa-icon-refresh fa-icon-spin&#39;&gt;&lt;/i&gt; Sending..." type="submit">
+                      发送消息
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+  <script src="/theme/assets/js/map.js"></script>
+</body>
