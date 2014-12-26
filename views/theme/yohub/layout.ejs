@@ -32,38 +32,38 @@
     <nav class="navbar navbar-collapsed-sm navbar-default" id="nav" role="navigation">
       <div class="navbar-header">
         <a class="navbar-brand" href="/">
-          <img src="/theme/assets/images/logo_120.png" alt="yohub-logo" width="120">
-          <img src="/theme/assets/images/yohub_400.png" alt="御虎企业管理咨询（上海）有限公司" width="400"/>
+          <img src="/theme/assets/images/logo_120.png" alt="yohub-logo"/>
+          <img src="/theme/assets/images/yohub_400.png" alt="御虎企业管理咨询（上海）有限公司"/>
         </a>
       </div>
       <div class="collapse navbar-collapse navbar-header-collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li class="active">
+          <li <%if (name=="index"){%>class="active"<%}%>>
             <a href="/">
               <span>首页</span>
             </a>
           </li>
-          <li class="">
+          <li <%if (name=="services"){%>class="active"<%}%>>
             <a href="/services">
               <span>主营业务</span>
             </a>
           </li>
-          <li class="">
+          <li <%if (name=="feature"){%>class="active"<%}%>>
             <a href="/feature">
               <span>服务特色</span>
             </a>
           </li>
-          <li class="">
+          <li <%if (name=="about_us"){%>class="active"<%}%>>
             <a href="/about_us">
               <span>加盟合作</span>
             </a>
           </li>
-          <li class="">
+          <li <%if (name=="share"){%>class="active"<%}%>>
             <a href="/share">
               <span>知识分享</span>
             </a>
           </li>
-          <li class="">
+          <li <%if (name=="contact"){%>class="active"<%}%>>
             <a href="/contact">
               <span>联系我们</span>
             </a>
@@ -126,7 +126,7 @@
                 <i class="fa fa-mobile"></i>
               </div>
               <div class="content">
-                <a href="tel:+8613524807676">+86 135 2480 7676</a>
+                <a href="tel:+8613524807656">+86 135 2480 7656</a>
               </div>
             </div>
             <div class="icon-box">
@@ -151,7 +151,7 @@
       <div class="row">
         <div class="col-lg-12 clearfix">
           <p class="copyright">
-            Copyright © 2015 yohub
+            Copyright © 2015 YOHUB
           </p>
           <div class="links">
             <a class="btn btn-circle btn-medium-light btn-sm" href="http://weibo.com/">

@@ -12,15 +12,16 @@
       标题 <input type="text" name="title" value="<%=photo.title%>"/>
     </div>
     <div class="form-item">
-      原图地址 <input type="text" class="photo-url" name="raw_url" value="<%=photo.raw_url%>"/>
-
-      <div class="preview-raw">
-        <img src="<%=photo.raw_url%>"/>
-      </div>
+      描述 <input type="text" name="description" value="<%=photo.description%>"/>
     </div>
+    <!--<div class="form-item">-->
+      <!--原图地址 <input type="text" class="photo-url" name="raw_url" value="<%=photo.raw_url%>"/>-->
+      <!--<div class="preview-raw">-->
+        <!--<img src="<%=photo.raw_url%>"/>-->
+      <!--</div>-->
+    <!--</div>-->
     <div class="form-item">
       缩略图地址 <input type="text" class="photo-url" name="preview_url" value="<%=photo.preview_url%>"/>
-
       <div class="preview-small">
         <img src="<%=photo.preview_url%>"/>
       </div>

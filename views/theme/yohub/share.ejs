@@ -1,30 +1,22 @@
-<body>
+<body class="share-page">
   <div id="wrapper">
     <div id="main" role="main">
       <div id="main-content">
         <div class="container">
           <div class="row portfolio-boxes isotope" id="portfolio-container">
+            <% photos.forEach(function(item){ %>
             <div class="col-sm-3 portfolio-box portfolio-filter-photography portfolio-filter-webdesign portfolio-item isotope-item">
-              <a href="/share">
+              <a href="/share" title="<%=item.title%>">
                 <div class="image-link">
                   <i class="fa fa-search"></i>
-                  <img class="img-responsive img-rounded center-block" alt="Lorem ipsum" width="263" height="171"
-                       src="/theme/assets/images/demo/5.jpg">
+                  <img class="img-responsive img-rounded center-block" alt="<%=item.title%>" width="263" height="171"
+                       src="<%=item.preview_url%>" onerror="this.src='http://r.ph.126.net/image/default/duser.png'">
                 </div>
-                <h3 class="title">Lorem ipsum</h3>
-                <p class="category">Photography, Webdesign</p>
+                <h3 class="title"><%=item.title%></h3>
+                <p class="category"><%=item.description%></p>
               </a>
             </div>
-            <div class="col-sm-3 portfolio-box portfolio-filter-photography portfolio-filter-webdesign portfolio-item isotope-item">
-              <a href="/share">
-                <div class="image-link">
-                  <i class="fa fa-search"></i>
-                  <img class="img-responsive img-rounded center-block" alt="Lorem ipsum" width="263" height="171" src="/theme/assets/images/demo/5.jpg">
-                </div>
-                <h3 class="title">Lorem ipsum</h3>
-                <p class="category">Photography, Webdesign</p>
-              </a>
-            </div>
+            <% }); %>
           </div>
         </div>
       </div>

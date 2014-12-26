@@ -118,6 +118,12 @@ body.error-page, body.countdown-page {
   text-shadow: none;
 }
 
+.share-page .portfolio-boxes .portfolio-box .category{
+  text-align: left;
+  overflow: visible;
+  white-space: normal;
+}
+
 .homepage.fullsize #wrapper {
   background-image: none;
 }

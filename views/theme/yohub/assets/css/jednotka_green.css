@@ -6528,7 +6528,7 @@ body.boxed #scroll-to-top {
     $FOOTER
 \*------------------------------------*/
 #footer #footer-main {
-  padding: 50px 0;
+  padding: 10px 0;
   background-color: #434955;
   text-align: center; }
   @media (min-width: 768px) {
@@ -6618,7 +6618,7 @@ body.boxed #scroll-to-top {
 #footer #footer-copyright {
   background-color: #353b47;
   color: #565f73;
-  padding: 20px 0;
+  padding: 5px 0;
   text-align: center; }
   @media (min-width: 768px) {
     #footer #footer-copyright {

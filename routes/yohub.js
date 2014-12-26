@@ -11,37 +11,45 @@ var postDao = require('../dao/post');
 var pageDao = require('../dao/page');
 var commentDao = require('../dao/comment');
 function _index(req, res, next) {
-  postDao.count({}, function(err, count) {
-    if (count == 0) {
-      res.redirect("/admin/install");
-    }
-    var maxPage = parseInt(count / config.postNum) + (count % config.postNum ? 1 : 0);
-    var currentPage = isNaN(parseInt(req.params[0])) ? 1 : parseInt(req.params[0]);
-    if (currentPage <= 0) currentPage = 1;
-    var nextPage = currentPage;
-    var title = config.name;
-    if (currentPage > 1)
-      title += " › 第" + currentPage + "页";
-    //skin，即起始位置
-    var start = ( currentPage - 1) * config.postNum;
-    if (maxPage < currentPage)
-      return;
-    else if (maxPage > currentPage)
-      nextPage = parseInt(currentPage) + 1;
-    postDao.findAll(start, parseInt(config.postNum), function(err, result) {
-      for (var i = 0; i < result.length; i++) {
-        result[i].content = marked(result[i].content);
-        if (result[i].content.indexOf('<!--more-->') > 0) {
-          result[i].content = result[i].content.substring(0, result[i].content.indexOf('<!--more-->')) + '<div class="ReadMore"><a href="/post/' + result[i].slug + '">[阅读更多]</a></div>';
-        }
-      }
-      var index_obj = {name: config.name, title: config.name, posts: result, crtP: currentPage, maxP: maxPage, nextP: nextPage};
-      res.render('theme/' + config.theme + '/index', index_obj);
-    });
-  });
+  res.render('theme/' + config.theme + '/index', {name: 'index'});
+  //postDao.count({}, function (err, count) {
+  //  if (count == 0) {
+  //    res.redirect("/admin/install");
+  //  }
+  //  var maxPage = parseInt(count / config.postNum) + (count % config.postNum ? 1 : 0);
+  //  var currentPage = isNaN(parseInt(req.params[0])) ? 1 : parseInt(req.params[0]);
+  //  if (currentPage <= 0) currentPage = 1;
+  //  var nextPage = currentPage;
+  //  var title = config.name;
+  //  if (currentPage > 1)
+  //    title += " › 第" + currentPage + "页";
+  //  //skin，即起始位置
+  //  var start = ( currentPage - 1) * config.postNum;
+  //  if (maxPage < currentPage)
+  //    return;
+  //  else if (maxPage > currentPage)
+  //    nextPage = parseInt(currentPage) + 1;
+  //  postDao.findAll(start, parseInt(config.postNum), function (err, result) {
+  //    for (var i = 0; i < result.length; i++) {
+  //      result[i].content = marked(result[i].content);
+  //      if (result[i].content.indexOf('<!--more-->') > 0) {
+  //        result[i].content = result[i].content.substring(0, result[i].content.indexOf('<!--more-->')) + '<div class="ReadMore"><a href="/post/' + result[i].slug + '">[阅读更多]</a></div>';
+  //      }
+  //    }
+  //    var index_obj = {
+  //      name: config.name,
+  //      title: config.name,
+  //      posts: result,
+  //      crtP: currentPage,
+  //      maxP: maxPage,
+  //      nextP: nextPage
+  //    };
+  //    res.render('theme/' + config.theme + '/index', index_obj);
+  //  });
+  //});
 }
 function _tag(req, res, next) {
-  postDao.findByTag(req.params.tag, function(err, result) {
+  postDao.findByTag(req.params.tag, function (err, result) {
     if (err) return;
     for (var i = 0; i < result.length; i++) {
       result[i].content = marked(result[i].content);
@@ -51,29 +59,26 @@ function _tag(req, res, next) {
   });
 }
 function _services(req, res, next) {
-  res.render('theme/' + config.theme + '/services');
+  res.render('theme/' + config.theme + '/services', {name: 'services'});
 }
 function _feature(req, res, next) {
-  res.render('theme/' + config.theme + '/feature');
+  res.render('theme/' + config.theme + '/feature', {name: 'feature'});
 }
 function _about_us(req, res, next) {
-  res.render('theme/' + config.theme + '/about_us');
-}
-function _share(req, res, next) {
-  res.render('theme/' + config.theme + '/share');
+  res.render('theme/' + config.theme + '/about_us', {name: 'about_us'});
 }
 function _contact(req, res, next) {
-  res.render('theme/' + config.theme + '/contact');
+  res.render('theme/' + config.theme + '/contact', {name: 'contact'});
 }
 
 function _page(req, res, next) {
-  pageDao.get({'slug': req.params.slug}, function(err, page) {
+  pageDao.get({'slug': req.params.slug}, function (err, page) {
     if (!err && page != null) {
       page.content = marked(page.content);
       //如果不存在 content_html，更新
       if (!page.content_html) {
         page.content_html = marked(page.content);
-        pageDao.update(page.id, {content_html: page.content_html}, function() {
+        pageDao.update(page.id, {content_html: page.content_html}, function () {
         })
       }
       page.page_title = config.name + " › " + page.title;
@@ -96,7 +101,7 @@ function _comment(req, res, next) {
     console.log("no_author not is empty");
     return res.redirect("/fuck-spam-comment");
   } else {
-    postDao.get({id: id}, function(err, post) {
+    postDao.get({id: id}, function (err, post) {
       if (!err && post != null) {
         var comment = {
           post_id: req.body.id,
@@ -122,7 +127,7 @@ function _comment(req, res, next) {
           }
         }
         comment.avatar = gravatar.url(comment.email, {s: '36', r: 'pg', d: 'mm'});
-        commentDao.insert(comment, function(err, comment) {
+        commentDao.insert(comment, function (err, comment) {
           if (!err && comment && comment.length == 1) {
             //配置了 akismet key 而且不为空时，进行 akismet spam检查
             if (config.akismet_options && config.akismet_options.apikey != "") {
@@ -134,12 +139,12 @@ function _comment(req, res, next) {
                 comment_author_email: comment[0].email,
                 comment_author_url: comment[0].url,
                 comment_type: "comment"
-              }, function(err, spam) {
+              }, function (err, spam) {
                 //发现SPAM
                 if (spam) {
                   console.log('Spam caught.');
                   comment[0].status = "0";//状态： 1：正常，0：SPAM
-                  commentDao.save(comment[0], function(err, result) {
+                  commentDao.save(comment[0], function (err, result) {
                     if (!err)
                       console.log("save comment status success");
                     else
@@ -162,12 +167,12 @@ function _feed(req, res) {
     res.statusCode = 404;
     res.send('Please set `rss` in config.js');
   }
-  postDao.findAll(0, parseInt(config.rss.max_rss_items), function(err, result) {
+  postDao.findAll(0, parseInt(config.rss.max_rss_items), function (err, result) {
     if (err) {
       return next(err);
     }
     var rss_obj = {
-      _attr: { version: '2.0' },
+      _attr: {version: '2.0'},
       channel: {
         title: config.rss.title,
         description: config.rss.description,
@@ -199,32 +204,38 @@ function _feed(req, res) {
     res.send(rss_content);
   });
 }
-function _photo(req, res) {
+function _share(req, res) {
   var limit = 999;
-  photoDao.all({}, limit, function(err, photos) {
-    res.render('theme/' + config.theme + '/photo', {title: config.name + " › 相片列表", photos: photos, name: config.name});
+  photoDao.all({}, limit, function (err, photos) {
+    res.render('theme/' + config.theme + '/share', {
+      photos: photos, name: 'share'
+    });
   });
 }
 function _archives(req, res) {
-  var sortNumber = function(a, b) {
+  var sortNumber = function (a, b) {
     return a.year < b.year
   };
   var archiveList = [];
-  postDao.all(function(err, archives) {
+  postDao.all(function (err, archives) {
     for (var i = 0; i < archives.length; i++) {
       var year = new Date(archives[i].created).getFullYear();
       if (archiveList[year] === undefined)
-        archiveList[year] = { year: year, archives: []};
+        archiveList[year] = {year: year, archives: []};
       archiveList[year].archives.push(archives[i]);
     }
     archiveList = archiveList.sort(sortNumber);
-    res.render('theme/' + config.theme + '/archives', {title: config.name + " › 文章存档", archives: archiveList, name: config.name});
+    res.render('theme/' + config.theme + '/archives', {
+      title: config.name + " › 文章存档",
+      archives: archiveList,
+      name: config.name
+    });
   });
 }
 function _pageNotFound(req, res) {
   console.log('404 handler, URL' + req.originalUrl);
   res.render('theme/' + config.theme + '/404', {
-    layout: true, status: 404, title: '页面未找到 - 404', name: 'nblog'
+    layout: true, status: 404, title: '页面未找到 - 404', name: '404'
   });
 }
 // URL /
@@ -240,7 +251,7 @@ exports.about_us = _about_us;
 // URL: /feed
 exports.contact = _contact;
 // URL: /photo
-exports.photo = _photo;
+//exports.photo = _photo;
 // URL: /archive
 exports.archives = _archives;
 // URL: /404
