@@ -6,7 +6,7 @@
           <div class="row portfolio-boxes isotope" id="portfolio-container">
             <% photos.forEach(function(item){ %>
             <div class="col-sm-3 portfolio-box portfolio-filter-photography portfolio-filter-webdesign portfolio-item isotope-item">
-              <a href="/share" title="<%=item.title%>">
+              <a href="/files/<%=item.file_name%>" title="<%=item.title%>" target="_blank">
                 <div class="image-link">
                   <i class="fa fa-search"></i>
                   <img class="img-responsive img-rounded center-block" alt="<%=item.title%>" width="263" height="171"

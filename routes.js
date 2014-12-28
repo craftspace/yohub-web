@@ -1,7 +1,6 @@
 var yohub = require('./routes/yohub');
 var admin = require('./routes/admin');
 module.exports = function(app) {
-  console.log("yohub", yohub);
   app.get('/', yohub.index);
   app.get(/^\/p\/(\d+)$/, yohub.index);
   app.get('/feature', yohub.feature);
@@ -10,6 +9,7 @@ module.exports = function(app) {
   app.get('/share', yohub.share);
   ////app.get('/page/:slug', yohub.page);
   app.get('/about_us', yohub.about_us);
+  app.get('/files/:string', yohub.files);
   //app.get('/tag/:tag', yohub.tag);
   app.get('/admin', admin.authUser, admin.index);
   app.get('/admin/install', admin.install);
