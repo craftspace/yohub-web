@@ -10,12 +10,13 @@ var adminStaticDir = __dirname + '/views/admin/assets';
 app.configure(function() {
   app.set('port', config.port);
   app.set('views', __dirname + '/views');
+  //app.set('files', __dirname + '/public');
   app.set('view engine', 'ejs');
   app.use(express.compress());
   app.use(partials());
   app.use(express.favicon(__dirname + '/public/favicon.ico'));
   app.use(express.logger('dev'));
-  app.use(express.bodyParser());
+  app.use(express.bodyParser({keepExtensions: true, uploadDir: __dirname + '/public/files'}));
   app.use(express.cookieParser());
   app.use(express.session({secret: config.session_secret}));
 });

@@ -26,6 +26,9 @@
         <img src="<%=photo.preview_url%>"/>
       </div>
     </div>
+    <div class="form-item">
+      附件 <input type="file" value="<%=photo.file_name%>"/>
+    </div>
     <input type="hidden" name="photo_id" value="<%=photo.photo_id%>"/>
     <input type="submit" value="保存" class="form-save"/>
   </form>

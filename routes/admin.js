@@ -7,12 +7,16 @@ var commentDao = require('../dao/comment.js');
 var photoDao = require('../dao/photo.js');
 var dateFormat = require('dateformat');
 var marked = require('marked');
-var akismet = require('akismet').client({blog: config.akismet_options.blog, apiKey: config.akismet_options.apikey/*, debug: true*/});
+var fs = require('fs');
+var akismet = require('akismet').client({
+  blog: config.akismet_options.blog,
+  apiKey: config.akismet_options.apikey/*, debug: true*/
+});
 function _index(req, res) {
   res.render('admin/index', {layout: true});
 }
 function _postIndex(req, res) {
-  postDao.all(function(err, result) {
+  postDao.all(function (err, result) {
     if (!err)
       res.render('admin/post_index', {layout: true, post_list: result, title: '日志列表'});
   });
@@ -33,7 +37,7 @@ function _postWrite(req, res) {
       created: created,
       tags: req.body.tags.split(',')
     };
-    postDao.insert(post, function(err, result) {
+    postDao.insert(post, function (err, result) {
       if (!err) {
         res.redirect('/admin/post/edit/' + post.id);
       } else {
@@ -45,7 +49,7 @@ function _postWrite(req, res) {
 function _postEdit(req, res) {
   if (req.method == "GET") {
     var id = req.params.id;
-    postDao.get({'id': id}, function(err, post) {
+    postDao.get({'id': id}, function (err, post) {
       if (post != null)
         res.render('admin/post_edit', {layout: true, post: post});
       else
@@ -63,7 +67,7 @@ function _postEdit(req, res) {
       created: created,
       tags: req.body.tags.split(',')
     };
-    postDao.update(req.body.post_id, post, function(err) {
+    postDao.update(req.body.post_id, post, function (err) {
       if (!err) {
         res.redirect('/admin/post/edit/' + req.body.post_id + "?msg=success");
       }
@@ -72,7 +76,7 @@ function _postEdit(req, res) {
 }
 function _postDelete(req, res) {
   if (req.method == "GET") {
-    postDao.deleteById(req.params.id, function(err, result) {
+    postDao.deleteById(req.params.id, function (err, result) {
       if (!err) {
         res.redirect("/admin/post");
       }
@@ -80,7 +84,7 @@ function _postDelete(req, res) {
   }
 }
 function _pageIndex(req, res) {
-  pageDao.all(function(err, result) {
+  pageDao.all(function (err, result) {
     if (!err)
       res.render('admin/page_index', {layout: true, page_list: result});
   });
@@ -100,7 +104,7 @@ function _pageWrite(req, res) {
       content_html: marked(req.body.content),
       created: created
     };
-    pageDao.insert(page, function(err, result) {
+    pageDao.insert(page, function (err, result) {
       if (!err) {
         res.redirect('/admin/page/edit/' + page.id);
       } else {
@@ -112,7 +116,7 @@ function _pageWrite(req, res) {
 function _pageEdit(req, res) {
   if (req.method == "GET") {
     var id = req.params.id;
-    pageDao.get({id: id}, function(err, page) {
+    pageDao.get({id: id}, function (err, page) {
       if (page != null)
         res.render('admin/page_edit', {layout: true, page: page});
       else
@@ -130,7 +134,7 @@ function _pageEdit(req, res) {
       content_html: marked(req.body.content),
       created: created
     };
-    pageDao.update(req.body.page_id, page, function(err, result) {
+    pageDao.update(req.body.page_id, page, function (err, result) {
       if (!err)
         res.redirect('/admin/page/edit/' + req.body.page_id + "?msg=success");
     });
@@ -138,7 +142,7 @@ function _pageEdit(req, res) {
 }
 function _pageDelete(req, res) {
   if (req.method == "GET") {
-    pageDao.deleteById(req.params.id, function(err, result) {
+    pageDao.deleteById(req.params.id, function (err, result) {
       if (!err) {
         res.redirect("/admin/page");
       }
@@ -149,24 +153,24 @@ function _commentIndex(req, res) {
   var limit = 100;
   var status = req.query['status'];
   if (!status) status = '1';
-  commentDao.all({status: status}, limit, function(err, comments) {
-    postDao.all(function(err, posts) {
+  commentDao.all({status: status}, limit, function (err, comments) {
+    postDao.all(function (err, posts) {
       res.render('admin/comment_index', {layout: true, comment_list: comments, posts: posts, status: status});
     });
   });
 }
 function _commentDelete(req, res) {
-  commentDao.deleteById(req.params.id, function(err, result) {
+  commentDao.deleteById(req.params.id, function (err, result) {
     res.redirect("/admin/comment");
   });
 }
 function _verifyAkismet(req, res) {
-  akismet.verifyKey(function(err, verified) {
+  akismet.verifyKey(function (err, verified) {
     res.render('admin/verify_akismet', {layout: true, status: !!verified});
   });
 }
 function _submitSpam(req, res) {
-  commentDao.findOne(req.params.id, function(err, comment) {
+  commentDao.findOne(req.params.id, function (err, comment) {
     if (!err) {
       // buggy
       akismet.submitSpam({
@@ -177,10 +181,10 @@ function _submitSpam(req, res) {
         comment_author_url: comment.url,
         comment_type: "comment",
         comment_content: comment.content
-      }, function(err) {
+      }, function (err) {
         console.log('Spam reported to Akismet.');
         comment.status = "0";//状态： 1：正常，0：SPAM
-        commentDao.save(comment, function(err, result) {
+        commentDao.save(comment, function (err, result) {
           if (!err)
             console.log("save comment status success");
           else
@@ -193,15 +197,15 @@ function _submitSpam(req, res) {
 }
 function _photoIndex(req, res) {
   var limit = 999;
-  photoDao.all({}, limit, function(err, photos) {
+  photoDao.all({}, limit, function (err, photos) {
     res.render('admin/photo_index', {layout: true, photos: photos});
   });
 }
-exports.photoEdit = function(req, res) {
+exports.photoEdit = function (req, res) {
   if (req.method == "GET") {
     var id = req.params.photo_id;
     if (id) {
-      photoDao.findByPhotoId(id, function(err, photo) {
+      photoDao.findByPhotoId(id, function (err, photo) {
         if (photo != null)
           res.render('admin/photo_edit', {layout: true, photo: photo});
         else
@@ -221,7 +225,7 @@ exports.photoEdit = function(req, res) {
       preview_url: req.body.preview_url,
       description: req.body.description
     };
-    photoDao.updateByPhotoId(req.body.photo_id, photo, function(err, result) {
+    photoDao.updateByPhotoId(req.body.photo_id, photo, function (err, result) {
       if (!err)
         res.redirect('/admin/photo');
 //        res.redirect('/admin/photo/edit/' + req.body.photo_id + "?msg=success");
@@ -234,16 +238,17 @@ function _photoWrite(req, res) {
   } else if (req.method == 'POST') {// POST a post
     var created = dateFormat(new Date(), "yyyy-mm-dd");
     if (req.body.created)
-      created = dateFormat(new Date(req.body.created), "yyyy-mm-dd")
+      created = dateFormat(new Date(req.body.created), "yyyy-mm-dd");
     var photo = {
       photo_id: +new Date() + '',
       title: req.body.title,
       raw_url: req.body.raw_url,
       preview_url: req.body.preview_url,
       description: req.body.description,
+      file_path: req.files.thumbnail.path.split('public')[1],
       created: created
     };
-    photoDao.insert(photo, function(err, result) {
+    photoDao.insert(photo, function (err, result) {
       if (!err) {
 //        res.redirect('/admin/photo/edit/' + photo.photo_id);
         res.redirect('/admin/photo');
@@ -255,7 +260,7 @@ function _photoWrite(req, res) {
 }
 function _photoDelete(req, res) {
   if (req.method == "GET") {
-    photoDao.deleteById(req.params.id, function(err, result) {
+    photoDao.deleteById(req.params.id, function (err, result) {
       if (!err) {
         res.redirect("/admin/photo");
       }
@@ -276,7 +281,7 @@ function _login(req, res) {
       return;
     }
     //判断用户帐号密码
-    userDao.get(name, function(err, user) {
+    userDao.get(name, function (err, user) {
       if (user) {
         pass = util.md5(pass);
         if (user.password != pass) {
@@ -312,7 +317,7 @@ function _authUser(req, res, next) {
     var auth_token = util.decrypt(cookie, config.session_secret);
     var auth = auth_token.split('\t');
     var user_name = auth[0];
-    userDao.get(user_name, function(err, user) {
+    userDao.get(user_name, function (err, user) {
       if (user) {
         req.session.user = user;
         return next();
@@ -324,7 +329,7 @@ function _authUser(req, res, next) {
   }
 }
 function _install(req, res, next) {
-  userDao.findAll({}, function(err, result) {
+  userDao.findAll({}, function (err, result) {
     if (!err) {
       if (result.length > 0) {
         /** 已经初始化过了 ***/
@@ -343,7 +348,7 @@ function _install(req, res, next) {
             password: util.md5(req.body.password)
           };
           //插入一个用户
-          userDao.insert(user, function(err, result) {
+          userDao.insert(user, function (err, result) {
             if (!err) {
               //发布一个 Hello World! 的文章
               var post = {
@@ -353,7 +358,7 @@ function _install(req, res, next) {
                 content: "欢迎使用 nblog。 这是程序自动发布的一篇文章。欢迎 fork nblog : https://github.com/nomospace/nblog",
                 created: dateFormat(new Date(), "yyyy-mm-dd")
               };
-              postDao.insert(post, function(err, result) {
+              postDao.insert(post, function (err, result) {
                 if (!err) {
                   //在 Hello world! 下发表一篇评论
                   var comment = {
@@ -365,7 +370,7 @@ function _install(req, res, next) {
                     content: "欢迎使用 nblog，欢迎与我交流Nodejs相关技术、",
                     created: dateFormat(new Date(), "isoDateTime")
                   };
-                  commentDao.insert(comment, function(err, result) {
+                  commentDao.insert(comment, function (err, result) {
                     if (!err) res.redirect('/admin/install?msg=success');
                   });
                 }

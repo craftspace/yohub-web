@@ -70,7 +70,9 @@ function _about_us(req, res, next) {
 function _contact(req, res, next) {
   res.render('theme/' + config.theme + '/contact', {name: 'contact'});
 }
-
+function _files(req, res, next) {
+  res.download(req.path);
+}
 function _page(req, res, next) {
   pageDao.get({'slug': req.params.slug}, function (err, page) {
     if (!err && page != null) {
@@ -250,6 +252,7 @@ exports.feature = _feature;
 exports.about_us = _about_us;
 // URL: /feed
 exports.contact = _contact;
+exports.files = _files;
 // URL: /photo
 //exports.photo = _photo;
 // URL: /archive
