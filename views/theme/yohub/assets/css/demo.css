@@ -1,3 +1,7 @@
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, Sans-serif;
+}
+
 .collapsed-navigation .btn, .elements .btn, .animations .btn {
   margin-bottom: 5px;
 }
@@ -118,7 +122,7 @@ body.error-page, body.countdown-page {
   text-shadow: none;
 }
 
-.share-page .portfolio-boxes .portfolio-box .category{
+.share-page .portfolio-boxes .portfolio-box .category {
   text-align: left;
   overflow: visible;
   white-space: normal;

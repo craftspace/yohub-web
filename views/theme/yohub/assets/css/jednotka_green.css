@@ -1,5 +1,5 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:100,400,300,500);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+/*@import url(http://fonts.googleapis.com/css?family=Roboto:100,400,300,500);*/
+/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700);*/
 /**
  * Name: Jednotka - Multipurpose Website HTML Template
  * Author: Bublina Studio - www.bublinastudio.com, info@bublinastudio.com
@@ -6696,11 +6696,11 @@ body.boxed #scroll-to-top {
     $TYPOGRAPHY
 \*------------------------------------*/
 body {
-  font-family: "Open Sans";
+  /*font-family: "Open Sans";*/;
   color: #676f7a; }
 
 .lead {
-  font-family: "Roboto";
+  /*font-family: "Roboto";*/
   font-size: 26px;
   line-height: 39px;
   font-weight: 300;
@@ -6708,19 +6708,19 @@ body {
   .lead.lead-lg {
     margin-bottom: 10px; }
   .lead.lead-md {
-    font-family: "Open Sans";
+    /*font-family: "Open Sans";*/;
     line-height: 30px;
     font-size: 18px;
     font-weight: 400;
     color: #676f7a; }
   .lead.lead-sm {
-    font-family: "Open Sans";
+    /*font-family: "Open Sans";*/;
     line-height: 26px;
     font-size: 16px;
     font-weight: 400;
     color: #676f7a; }
   .lead.lead-xs {
-    font-family: "Open Sans";
+    /*font-family: "Open Sans";*/;
     line-height: 22px;
     font-size: 14px;
     font-weight: 400;
@@ -6753,12 +6753,12 @@ p {
     height: 45px; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto";
+  /*font-family: "Roboto";*/
   font-weight: 500;
   color: #434955; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
     color: #676f7a;
-    font-family: "Open Sans";
+    /*font-family: "Open Sans";*/;
     margin-top: 15px; }
 
 h1 {
@@ -6874,7 +6874,7 @@ pre {
       display: block;
       color: white;
       font-size: 18px;
-      font-family: "Open Sans"; }
+      /*font-family: "Open Sans";*/; }
   #main-content-header .breadcrumb {
     background-color: transparent;
     font-size: 16px;
@@ -6941,7 +6941,7 @@ pre {
   line-height: 30px;
   color: #676f7a;
   margin-bottom: 25px;
-  font-family: "Open Sans"; }
+  /*font-family: "Open Sans";*/; }
 .quotes .quote .author-wrapper .author {
   border-top: 2px solid #eaedf2;
   padding: 25px 45px 0 70px;
@@ -6988,7 +6988,7 @@ pre {
 .panel.pricing-table .panel-body .btn {
   text-transform: uppercase; }
 .panel.pricing-table .panel-body .price {
-  font-family: "Open Sans";
+  /*font-family: "Open Sans";*/;
   font-size: 48px;
   line-height: 48px;
   color: #8dc153;
@@ -6997,7 +6997,7 @@ pre {
   .panel.pricing-table .panel-body .price .currency {
     color: #9ca4af;
     font-size: 24px;
-    font-family: "Roboto";
+    /*font-family: "Roboto";*/
     font-weight: 300;
     padding-right: 5px;
     margin-right: -8px; }
@@ -7693,7 +7693,7 @@ pre {
   .text-boxes .text-box .toolbar {
     margin-bottom: 30px; }
     .text-boxes .text-box .toolbar .btn-link {
-      font-family: "Open Sans";
+      /*font-family: "Open Sans";*/;
       font-weight: 400;
       padding: 2px 10px;
       color: #9ca4af;
@@ -7977,7 +7977,7 @@ pre {
         margin-top: 0; } }
   .profile-boxes .profile-box .position {
     color: #9ca4af;
-    font-family: "Open Sans";
+    /*font-family: "Open Sans";*/;
     font-size: 14px;
     text-transform: uppercase;
     margin-top: 0; }
@@ -8100,11 +8100,11 @@ body.boxed .hero-carousel .flex-direction-nav .flex-next {
   .hero-carousel p {
     margin: 0; }
   .hero-carousel .big, .hero-carousel .carousel-blur .normal, .carousel-blur .hero-carousel .normal, .hero-carousel .carousel-image .normal, .carousel-image .hero-carousel .normal {
-    font-family: "Roboto";
+    /*font-family: "Roboto";*/
     font-weight: 500;
     margin: 0; }
   .hero-carousel .normal {
-    font-family: "Roboto"; }
+    /*font-family: "Roboto";*/ }
   .hero-carousel .flex-direction-nav {
     position: absolute;
     list-style: none;
@@ -8333,7 +8333,7 @@ body.boxed .hero-carousel .flex-direction-nav .flex-next {
     background-color: rgba(0, 0, 0, 0.6); }
 .carousel-contrast .normal {
   color: white;
-  font-family: "Roboto";
+  /*font-family: "Roboto";*/
   font-weight: 300;
   margin: 0;
   padding: 15px 30px;
@@ -8624,7 +8624,7 @@ ol.timeline {
           transition: border-color 300ms linear; } }
     ol.timeline li .time {
       color: #434955;
-      font-family: "Roboto";
+      /*font-family: "Roboto";*/
       font-weight: 700;
       font-size: 22px;
       margin-bottom: 15px;
@@ -8783,7 +8783,7 @@ ul.circle-stats {
       height: 30px;
       margin-top: -19px;
       margin-bottom: 0;
-      font-family: "Roboto";
+      /*font-family: "Roboto";*/
       font-weight: 400;
       font-size: 24px;
       color: #434955; }
@@ -9701,7 +9701,7 @@ a.link-info {
   color: white;
   background-color: #8dc153;
   text-decoration: none;
-  font-family: "Open Sans";
+  /*font-family: "Open Sans";*/;
   font-size: 16px;
   font-weight: 600;
   border: 2px solid transparent;
@@ -9788,7 +9788,7 @@ a.link-info {
       border: 2px solid transparent;
       border-bottom: none;
       border-top: 4px solid transparent;
-      font-family: "Open Sans";
+      /*font-family: "Open Sans";*/;
       font-size: 16px;
       font-weight: 600;
       margin-right: 3px;
@@ -10363,7 +10363,7 @@ body.error-page {
   -o-background-size: cover;
   background-size: cover;
   text-align: center;
-  font-family: "Roboto";
+  /*font-family: "Roboto";*/
   -ms-behavior: url("/assets/images/ie/backgroundsize.min.htc"); }
   body.error-page #wrapper {
     padding: 20px 0;
@@ -10420,7 +10420,7 @@ body.countdown-page {
   -o-background-size: cover;
   background-size: cover;
   text-align: center;
-  font-family: "Roboto";
+  /*font-family: "Roboto";*/
   -ms-behavior: url("/assets/images/ie/backgroundsize.min.htc"); }
   body.countdown-page #wrapper {
     padding: 20px 0;
