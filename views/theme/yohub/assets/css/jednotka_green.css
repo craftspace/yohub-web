@@ -5961,7 +5961,7 @@ html {
   height: 100%; }
 
 body {
-  background-color: #353b47;
+  /*background-color: #353b47;*/
   width: 100%;
   overflow-x: hidden; }
   body.boxed {

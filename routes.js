@@ -2,6 +2,7 @@ var yohub = require('./routes/yohub');
 var admin = require('./routes/admin');
 module.exports = function(app) {
   app.get('/', yohub.index);
+  app.get('/home', yohub.home);
   app.get(/^\/p\/(\d+)$/, yohub.index);
   app.get('/feature', yohub.feature);
   app.get('/services', yohub.services);
