@@ -1,4 +1,5 @@
 var config = require('../config').config;
+var fs = require('fs');
 var data2xml = require('data2xml');
 var marked = require('marked');
 var dateFormat = require('dateformat');
@@ -48,6 +49,9 @@ function _index(req, res, next) {
   //  });
   //});
 }
+function _home(req, res, next) {
+  res.render('theme/' + config.theme + '/index', {name: 'index', direct:true});
+}
 function _tag(req, res, next) {
   postDao.findByTag(req.params.tag, function (err, result) {
     if (err) return;
@@ -71,7 +75,14 @@ function _contact(req, res, next) {
   res.render('theme/' + config.theme + '/contact', {name: 'contact'});
 }
 function _files(req, res, next) {
-  res.download(req.path);
+  var path = req.path;
+  fs.exists(path, function (exists) {
+    if (exists) {
+      res.download(path);
+    } else {
+      _pageNotFound(req, res);
+    }
+  });
 }
 function _page(req, res, next) {
   pageDao.get({'slug': req.params.slug}, function (err, page) {
@@ -242,6 +253,7 @@ function _pageNotFound(req, res) {
 }
 // URL /
 exports.index = _index;
+exports.home = _home;
 // URL: /post/id
 exports.services = _services;
 // URL: /page/slug

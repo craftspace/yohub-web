@@ -223,7 +223,8 @@ exports.photoEdit = function (req, res) {
       title: req.body.title,
       raw_url: req.body.raw_url,
       preview_url: req.body.preview_url,
-      description: req.body.description
+      description: req.body.description,
+      file_path: req.files.thumbnail.path.split('public')[1]
     };
     photoDao.updateByPhotoId(req.body.photo_id, photo, function (err, result) {
       if (!err)
