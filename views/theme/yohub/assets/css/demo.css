@@ -43,6 +43,15 @@ a[href="javascript:;"] {
   text-align: left;
 }
 
+.service-page .show-detail {
+  float: right;
+  cursor: pointer;
+}
+
+.service-page table {
+  font-size: 12px;
+}
+
 .welcome-bg {
   position: fixed;
   width: 100%;
@@ -51,7 +60,7 @@ a[href="javascript:;"] {
   right: 0;
   bottom: 0;
   left: 0;
-  background: url("../images/shanghai_s.jpg") no-repeat top center;
+  background: url("../images/shanghai_o.jpg") no-repeat top center;
   -webkit-background-size: cover;
   background-size: cover;
   z-index: 1001;
@@ -154,20 +163,35 @@ body.error-page, body.countdown-page {
   display: block;
 }
 
+.homepage .cover-container {
+  width: 1024px;
+  margin: 0 auto;
+}
+
 .homepage .welcome-title {
-  text-align: center;
+  float: left;
+  margin-top: 10px;
+}
+
+.homepage .welcome-title .logo {
+  margin-left: -25px;
 }
 
 .homepage .welcome-title img {
-  margin-left: -100px;
 }
 
 .homepage .welcome-enter {
-  text-align: center;
+  float: right;
+  margin-top: 15px;
+  text-align: right;
 }
 
 .homepage .welcome-enter a {
-  font-size: 22px;
+  font-size: 16px;
+}
+
+.homepage .col-lg-12.animate span {
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Microsoft YaHei', sans-serif;
 }
 
 .homepage.fullsize #wrapper {
@@ -179,7 +203,7 @@ body.error-page, body.countdown-page {
 }
 
 .homepage .slides {
-  margin-top: -9px;
+  /*margin-top: -9px;*/
 }
 
 .aboutus-page .panel-title {

@@ -17,8 +17,8 @@ app.configure(function() {
   app.use(express.favicon(__dirname + '/public/favicon.ico'));
   app.use(express.logger('dev'));
   app.use(express.bodyParser({keepExtensions: true, uploadDir: __dirname + '/public/files'}));
-  app.use(express.cookieParser());
-  app.use(express.session({secret: config.session_secret}));
+  //app.use(express.cookieParser());
+  //app.use(express.session({secret: config.session_secret}));
 });
 app.configure('development', function() {
   app.use("/admin/assets", express.static(adminStaticDir));
