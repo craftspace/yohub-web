@@ -50,7 +50,7 @@ function _index(req, res, next) {
   //});
 }
 function _home(req, res, next) {
-  res.render('theme/' + config.theme + '/index', {name: 'index', direct:true});
+  res.render('theme/' + config.theme + '/index', {name: 'index', direct: true});
 }
 function _tag(req, res, next) {
   postDao.findByTag(req.params.tag, function (err, result) {
@@ -225,23 +225,62 @@ function _share(req, res) {
     });
   });
 }
+function _post(req, res, next) {
+  postDao.get({id: req.params.id}, function (err, post) {
+    if (err) {
+      res.statusCode = 500;
+      res.send('500');
+    } else if (post == null) {
+      next();
+    } else {
+      post.content = marked(post.content);
+      //如果不存在 content_html，更新
+      if (!post.content_html) {
+        post.content_html = marked(post.content);
+        postDao.update(post.id, {content_html: post.content_html}, function () {
+        })
+      }
+      var page_title = config.name + " › " + post.title;
+      commentDao.findByPostId(post.id, function (err, comments) {
+        for (var i = 0; i < comments.length; i++) {
+          if (!comments[i].avatar) {
+            comments[i].avatar = gravatar.url(comments[i].email, {s: '36', r: 'pg', d: 'mm'});
+            commentDao.updateAvater(comments[i]._id.toString(), comments[i].avatar, function () {
+            })
+          }
+        }
+        if (!err) {
+          res.render('theme/' + config.theme + '/post', {
+            title: page_title,
+            post: post,
+            comments: comments,
+            name: config.name
+          });
+        } else {
+          res.statusCode = 500;
+          res.send('500');
+        }
+      });
+    }
+  });
+}
 function _archives(req, res) {
   var sortNumber = function (a, b) {
     return a.year < b.year
   };
   var archiveList = [];
   postDao.all(function (err, archives) {
-    for (var i = 0; i < archives.length; i++) {
-      var year = new Date(archives[i].created).getFullYear();
-      if (archiveList[year] === undefined)
-        archiveList[year] = {year: year, archives: []};
-      archiveList[year].archives.push(archives[i]);
-    }
-    archiveList = archiveList.sort(sortNumber);
-    res.render('theme/' + config.theme + '/archives', {
+    //for (var i = 0; i < archives.length; i++) {
+    //  var year = new Date(archives[i].created).getFullYear();
+    //  if (archiveList[year] === undefined)
+    //    archiveList[year] = {year: year, archives: []};
+    //  archiveList[year].archives.push(archives[i]);
+    //}
+    //archiveList = archiveList.sort(sortNumber);
+    res.render('theme/' + config.theme + '/post', {
       title: config.name + " › 文章存档",
-      archives: archiveList,
-      name: config.name
+      archives: archives,
+      name: "post"
     });
   });
 }
@@ -257,6 +296,7 @@ exports.home = _home;
 // URL: /post/id
 exports.services = _services;
 // URL: /page/slug
+exports.post = _archives;
 exports.share = _share;
 // URL /tag/*
 exports.feature = _feature;
@@ -267,7 +307,5 @@ exports.contact = _contact;
 exports.files = _files;
 // URL: /photo
 //exports.photo = _photo;
-// URL: /archive
-exports.archives = _archives;
 // URL: /404
 exports.pageNotFound = _pageNotFound;

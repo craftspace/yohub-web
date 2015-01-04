@@ -308,25 +308,30 @@ function _logout(req, res, next) {
   res.redirect('/');
 };
 function _authUser(req, res, next) {
-  if (req.session.user) {
-    return next();
+  if (req.session) {
+    if (req.session.user) {
+      return next();
+    }
+    else {
+      var cookie = req.cookies[config.auth_cookie_name];
+      if (!cookie)
+        return res.redirect('/admin/login');
+      var auth_token = util.decrypt(cookie, config.session_secret);
+      var auth = auth_token.split('\t');
+      var user_name = auth[0];
+      userDao.get(user_name, function (err, user) {
+        if (user) {
+          req.session.user = user;
+          return next();
+        }
+        else {
+          return res.redirect('/admin/login');
+        }
+      });
+    }
   }
   else {
-    var cookie = req.cookies[config.auth_cookie_name];
-    if (!cookie)
-      return res.redirect('/admin/login');
-    var auth_token = util.decrypt(cookie, config.session_secret);
-    var auth = auth_token.split('\t');
-    var user_name = auth[0];
-    userDao.get(user_name, function (err, user) {
-      if (user) {
-        req.session.user = user;
-        return next();
-      }
-      else {
-        return res.redirect('/admin/login');
-      }
-    });
+    return next();
   }
 }
 function _install(req, res, next) {

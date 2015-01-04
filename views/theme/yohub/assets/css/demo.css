@@ -2,6 +2,10 @@ body {
   font-family: 'Helvetica Neue', Helvetica, Arial, Sans-serif;
 }
 
+#cnzz_stat_icon_1254026096 {
+  display: none;
+}
+
 .collapsed-navigation .btn, .elements .btn, .animations .btn {
   margin-bottom: 5px;
 }

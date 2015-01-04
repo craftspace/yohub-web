@@ -8,7 +8,8 @@ module.exports = function(app) {
   app.get('/services', yohub.services);
   app.get('/contact', yohub.contact);
   app.get('/share', yohub.share);
-  ////app.get('/page/:slug', yohub.page);
+  app.get('/post', yohub.post);
+  app.get('/post/:id', yohub.post);
   app.get('/about_us', yohub.about_us);
   app.get('/files/:string', yohub.files);
   //app.get('/tag/:tag', yohub.tag);
