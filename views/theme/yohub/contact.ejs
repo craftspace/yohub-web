@@ -71,44 +71,13 @@
             <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
               <div class="page-header page-header-with-icon">
                 <i class="fa fa-envelope"></i>
-                <h2>填写表单</h2>
+                <h2>填写客户业务咨询问卷表单</h2>
               </div>
-              <form class="form form-validation form-contact" method="post" novalidate="novalidate">
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="alert alert-success form-contact-success hidden">Thanks! Your message has been successfully sent!</div>
-                    <div class="alert alert-danger form-contact-error hidden">Ooops! There was an error sending your message.</div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-group control-group">
-                      <input class="form-control" data-rule-required="true" name="name" placeholder="用户名" type="text">
-                      <!-- / this field is required for simple anti spam function, don"t remove it! -->
-                      <input class="form-control" name="human" placeholder="Are you human?" style="display: none;" type="text">
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-group control-group">
-                      <input class="form-control" data-rule-email="true" data-rule-required="true" name="email" placeholder="电子邮件" type="email">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="form-group control-group">
-                      <textarea class="form-control" data-rule-required="true" name="message" placeholder="说点什么吧..."></textarea>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <button class="btn btn-contrast btn-block form-contact-submit" data-loading-text="&lt;i class=&#39;fa-icon-refresh fa-icon-spin&#39;&gt;&lt;/i&gt; Sending..." type="submit">
-                      发送消息
-                    </button>
-                  </div>
-                </div>
-              </form>
+              <div class="col-sm-12">
+                <button class="btn btn-contrast btn-block form-contact-submit" data-toggle="modal" data-target="#contact_form">
+                  联系
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -1,0 +1,102 @@
+<div id="contact-us" data-toggle="modal" data-target="#contact_form_modal">
+  联系
+  <i class="fa fa-comment"></i>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="contact_form_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">客户业务咨询问卷表单</h4>
+      </div>
+      <div class="modal-body">
+        <iframe name="contact_hidden_frame" frameborder="0" style="display: none;"></iframe>
+        <form id="contact_form" class="form form-validation" method="post" action="/submit_form" target="contact_hidden_frame">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="alert alert-success form-contact-success hidden">Thanks! Your message has been successfully sent!</div>
+              <div class="alert alert-danger form-contact-error hidden">Ooops! There was an error sending your message.</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group control-group">
+                <input class="form-control" name="corp" placeholder="公司" type="text">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group control-group">
+                <input class="form-control" name="name" placeholder="联系人" type="text">
+              </div>
+            </div>
+              <div class="col-sm-4">
+                <div class="form-group control-group">
+                  <input class="form-control" name="mobile" placeholder="手机">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group control-group">
+                  <input class="form-control" name="tel" placeholder="办公电话">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group control-group">
+                  <input class="form-control" name="email" placeholder="电子邮件" type="email">
+                </div>
+              </div>
+            <div class="col-sm-8">
+              <div class="form-group control-group">
+                <input class="form-control" name="place" placeholder="服务地点">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group control-group">
+                <input class="form-control" name="industry" placeholder="所属行业">
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <label class="col-md-2 control-label">服务时间</label>
+              <div class="col-sm-4">
+                <input class="form-control date start" name="start" placeholder="起始时间" type="text">
+              </div>
+              <div class="col-sm-4">
+                <input class="form-control date end" name="end" placeholder="结束时间" type="text">
+              </div>
+            </div>
+            <div class="col-sm-12" style="margin-top:10px;">
+              <div class="form-group control-group">
+                <label class="col-md-2 control-label">专家类型</label>
+                <div class="col-md-10">
+                  <label class="checkbox-inline">
+                    <input name="level" type="checkbox" value="teji">
+                    特级顾问
+                  </label>
+                  <label class="checkbox-inline">
+                    <input name="level" type="checkbox" value="gaoji">
+                    高级顾问
+                  </label>
+                  <label class="checkbox-inline">
+                    <input name="level" type="checkbox" value="fengxian">
+                    风险工程师
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group control-group">
+                <textarea class="form-control" name="desc" placeholder="其他要求"></textarea>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id="contact_form_submit" type="button" class="btn btn-contrast">提交</button>
+      </div>
+    </div>
+  </div>
+</div>

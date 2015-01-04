@@ -4,12 +4,14 @@ var data2xml = require('data2xml');
 var marked = require('marked');
 var dateFormat = require('dateformat');
 var gravatar = require('gravatar');
+var sendMail = require('./send-mail');
 var akismet = require('akismet').client({
   blog: config.akismet_options.blog, apiKey: config.akismet_options.apikey
 });
 var photoDao = require('../dao/photo');
 var postDao = require('../dao/post');
 var pageDao = require('../dao/page');
+var contactDao = require('../dao/contact');
 var commentDao = require('../dao/comment');
 function _index(req, res, next) {
   res.render('theme/' + config.theme + '/index', {name: 'index'});
@@ -74,6 +76,28 @@ function _about_us(req, res, next) {
 function _contact(req, res, next) {
   res.render('theme/' + config.theme + '/contact', {name: 'contact'});
 }
+function _submit_form(req, res, next) {
+  var contact = {
+    name: req.body.name,
+    corp: req.body.corp,
+    email: req.body.email,
+    mobile: req.body.mobile,
+    tel: req.body.tel,
+    place: req.body.place,
+    start: req.body.start,
+    end: req.body.end,
+    industry: req.body.industry,
+    desc: req.body.desc,
+    level: req.body.level
+  };
+  contactDao.insert(contact, function (err, result) {
+    if (!err) {
+      sendMail.sendMail(JSON.stringify(result, null, 2));
+      res.send(200);
+      res.end();
+    }
+  });
+}
 function _files(req, res, next) {
   var path = req.path;
   fs.exists(path, function (exists) {
@@ -98,7 +122,7 @@ function _page(req, res, next) {
       res.render('theme/' + config.theme + '/page', {page: page, name: config.name, title: page.page_title});
     }
     else {
-      pageNotFound(req, res);
+      _pageNotFound(req, res);
 //      next();
     }
   });
@@ -302,6 +326,7 @@ exports.share = _share;
 exports.feature = _feature;
 // POST URL: /comment
 exports.about_us = _about_us;
+exports.submit_form = _submit_form;
 // URL: /feed
 exports.contact = _contact;
 exports.files = _files;

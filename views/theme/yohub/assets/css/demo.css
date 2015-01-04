@@ -14,6 +14,37 @@ body {
   background-position: center 0;
 }
 
+body.boxed #contact-us {
+  border-color: #9ca4af;
+  color: #676f7a;
+  background-color: #eaedf2;
+}
+
+#contact-us {
+  cursor: pointer;
+  display: block;
+  right: 10px;
+  border: 2px solid #eaedf2;
+  color: #8dc153;
+  line-height: 35px;
+  text-align: center;
+  position: fixed;
+  right: 10px;
+  bottom: 62px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  width: 60px;
+  height: 40px;
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 1002;
+}
+
+#contact_form textarea {
+  min-height: 150px;
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
   .homepage .panel-circle-big-contrast .panel-body {
     height: 286px;
@@ -35,7 +66,6 @@ body {
 p.home-desc {
   text-indent: 2em;
   text-align: left;
-  font-size: 12px;
 }
 
 a[href="javascript:;"] {

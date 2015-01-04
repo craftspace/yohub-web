@@ -82,11 +82,11 @@ input, textarea, select {
   visibility: hidden;
 }
 
-*html .clearfix {
+* html .clearfix {
   height: 1%;
 }
 
-*+html .clearfix {
+* + html .clearfix {
   height: 1%;
 }
 
@@ -189,6 +189,10 @@ a {
 
 #action {
   margin-left: 10px;
+}
+
+#action > div {
+  padding: 5px;
 }
 
 #post-list ul li {
