@@ -24,6 +24,7 @@ var message = {
   from: 'yohub <nomospace@163.com>',
 
   // Comma separated list of recipients
+  //to: '"iven.zhang" <jinlu_hz@163.com>',
   to: '"iven.zhang" <iven.zhang@yohub.com.cn>',
 
   // Subject of the message

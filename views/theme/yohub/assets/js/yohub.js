@@ -1,19 +1,18 @@
-$('body.service-page').on('click', '.show-detail', function () {
+$('body.service-page').on('click', '.show-detail', function() {
   var $t = $(this).parent().find('table');
   $t.hasClass('hide') ? $t.removeClass('hide') : $t.addClass('hide');
 });
 
 $('#contact_form .date').datepicker({
-  'format': 'm/d/yyyy',
+  'format': 'yyyy/m/d',
   'autoclose': true
 });
 
-$('#contact_form_submit').on('click', function () {
+$('#contact_form_submit').on('click', function() {
   var form = $('#contact_form');
   var contact = {
     name: form[0].name.value,
     corp: form[0].corp.value,
-    email: form[0].email.value,
     mobile: form[0].mobile.value,
     tel: form[0].tel.value,
     place: form[0].place.value,
@@ -53,4 +52,9 @@ $('#contact_form_submit').on('click', function () {
   }
 
   $('#contact_form').submit();
+
+  setTimeout(function() {
+    alert('提交成功');
+    $('#contact_form_modal').modal('hide');
+  }, 0);
 });
