@@ -164,8 +164,8 @@ body.error-page, body.countdown-page {
 }
 
 .hero-carousel .the1 {
-  background: url("../images/1_tiny_.png") center 100px;
-  /*background: url("http://i2.tietuku.com/599d670dcd815830.png") center 100px;*/
+  background: url("http://i2.tietuku.com/599d670dcd815830.png") center 100px;
+  /*background: url("../images/1_tiny_.png") center 100px;*/
 }
 
 .hero-carousel .the2 {
