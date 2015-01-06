@@ -94,7 +94,8 @@ a[href="javascript:;"] {
   right: 0;
   bottom: 0;
   left: 0;
-  background: url("../images/shanghai_o.jpg") no-repeat top center;
+  background: url("http://i2.tietuku.com/0ac3252e34c39073.jpg") no-repeat top center;
+  /*background: url("../images/shanghai_o.jpg") no-repeat top center;*/
   -webkit-background-size: cover;
   background-size: cover;
   z-index: 1001;
@@ -162,16 +163,29 @@ body.error-page, body.countdown-page {
   background-repeat: no-repeat;
 }
 
-.hero-carousel .forest {
+.hero-carousel .the1 {
   background: url("../images/1_tiny_.png") center 100px;
+  /*background: url("http://i2.tietuku.com/599d670dcd815830.png") center 100px;*/
 }
 
-.hero-carousel .sea {
-  background: url("../images/2_tiny_.png") center 100px;
+.hero-carousel .the2 {
+  background: url("http://i2.tietuku.com/ece87ea7dff88d0f.png") center 100px;
+  /*background: url("../images/2_tiny_.png") center 100px;*/
 }
 
-.hero-carousel .bokeh {
-  background: url("../images/3_tiny_.png") center 100px;
+.hero-carousel .the3 {
+  background: url("http://i2.tietuku.com/84c688ab8122a4ce.png") center 100px;
+  /*background: url("../images/3_tiny_.png") center 100px;*/
+}
+
+.hero-carousel .the4 {
+  background: url("http://i2.tietuku.com/f1634604bbb49464.jpg") center 100px;
+  /*background: url("../images/4_tiny_.jpg") center 100px;*/
+}
+
+.hero-carousel .the5 {
+  background: url("http://i2.tietuku.com/a406d9bd14a345ab.jpg") center 100px;
+  /*background: url("../images/3_tiny_.png") center 100px;*/
 }
 
 #header .navbar-default.navbar-collapsed-sm .navbar-nav > li > a span {
@@ -211,13 +225,16 @@ body.error-page, body.countdown-page {
   margin-left: -25px;
 }
 
-.homepage .welcome-title img {
+.homepage .welcome-enter button {
+  padding: 2px 12px;
 }
 
 .homepage .welcome-enter {
   float: right;
-  margin-top: 15px;
   text-align: right;
+  position: relative;
+  top: 40px;
+  right: 110px;
 }
 
 .homepage .welcome-enter a {
