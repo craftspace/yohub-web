@@ -6223,11 +6223,17 @@ body.boxed #scroll-to-top {
           -webkit-border-bottom-right-radius: 5px;
           border-bottom-right-radius: 5px; } }
     @media (min-width: 768px) {
+      .navbar-header{
+        margin-left: -25px;
+      }
+      .navbar-nav.navbar-right:last-child {
+        margin-right: -45px;
+      }
       #header .navbar-default.navbar-collapsed-sm .navbar-nav > li {
         margin: 0; }
         #header .navbar-default.navbar-collapsed-sm .navbar-nav > li > a {
           margin-top: 1px;
-          padding: 0 15px;
+          padding: 0 10px;
           background-color: transparent;
           border: none; }
           #header .navbar-default.navbar-collapsed-sm .navbar-nav > li > a [class^="fa-"], #header .navbar-default.navbar-collapsed-sm .navbar-nav > li > a [class*=" fa-"] {
