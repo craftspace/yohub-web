@@ -1,4 +1,4 @@
-<body class="homepage fullsize <%if (typeof direct!=='undefined'&&direct==true){%>use-direct<%}%>">
+<body class="homepage fullsize <%if (typeof direct!=='undefined'&&direct==true){%>use-direct<%}else{%>use-welcome<%}%>">
   <%if (typeof direct=='undefined'){%>
   <div id="welcome_wrapper" class="welcome-bg">
     <div class="cover-container">
@@ -23,7 +23,18 @@
     <div id="main" role="main">
       <div class="hero-carousel carousel-contrast carousel-contrast-arrows carousel-contrast-pagination flexslider fade-loading" id="carousel-example-2">
         <ul class="slides">
-          <li class="item the1" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
+          <li class="item the1">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12 animate">
+                  <h2 class="big fadeInUp animated">
+                    <span class="animated">在我们眼中，这也许是一件不合格的作品</span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="item the2" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
             <div class="container">
               <div class="row">
                 <div class="col-lg-12 animate">
@@ -42,23 +53,12 @@
               </div>
             </div>
           </li>
-          <li class="item the2">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-12 animate">
-                  <h2 class="big fadeInUp animated">
-                    <span class="animated">预见它还是遇见它？</span>
-                  </h2>
-                </div>
-              </div>
-            </div>
-          </li>
           <li class="item the3">
             <div class="container">
               <div class="row">
                 <div class="col-lg-12 animate">
                   <h2 class="big fadeInUp animated">
-                    <span class="animated">在我们眼中，这也许是一件不合格的作品</span>
+                    <span class="animated">不能识别风险是最大的风险</span>
                   </h2>
                 </div>
               </div>
@@ -69,7 +69,7 @@
               <div class="row">
                 <div class="col-lg-12 animate">
                   <h2 class="big fadeInUp animated">
-                    <span class="animated">不能识别风险是最大的风险</span>
+                    <span class="animated">预见它还是遇见它？</span>
                   </h2>
                 </div>
               </div>

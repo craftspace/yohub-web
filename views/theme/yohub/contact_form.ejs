@@ -1,10 +1,10 @@
-<div id="contact-us" data-toggle="modal" data-target="#contact_form_modal">
-  联系
+<div id="contact-us" <%if (typeof simple=='undefined' || name=='contact_form'){%>class="hide"<%}%> data-toggle="modal" data-target="#contact_form_modal">
+  业务垂询
   <i class="fa fa-comment"></i>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="contact_form_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div <%if (typeof simple=='undefined'){%>class="modal fade"<%}%> id="contact_form_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

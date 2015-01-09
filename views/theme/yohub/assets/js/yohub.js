@@ -54,7 +54,16 @@ $('#contact_form_submit').on('click', function() {
   $('#contact_form').submit();
 
   setTimeout(function() {
-    alert('提交成功');
+    alert('提交成功！非常感谢！\n我们将及时与您联系！');
     $('#contact_form_modal').modal('hide');
   }, 0);
 });
+
+if ($('body').data('name') != 'contact_form') {
+  var $contact_icon = $('#contact-us');
+  if ($contact_icon.length) {
+    setInterval(function() {
+      $contact_icon.hasClass('hide') ? $contact_icon.removeClass('hide') : $contact_icon.addClass('hide');
+    }, 1000);
+  }
+}

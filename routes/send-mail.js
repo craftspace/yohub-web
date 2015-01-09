@@ -71,8 +71,6 @@ var message = {
   //  }]
 };
 
-console.log('Sending Mail');
-
 exports.sendMail = function (content) {
   var transport = init();
   message.text = '客户业务咨询问卷表单';
@@ -83,6 +81,7 @@ exports.sendMail = function (content) {
       console.log(error.message);
       return;
     }
+    console.log('Sending Mail');
     console.log('Message sent successfully!');
 
     // if you don't want to use this transport object anymore, uncomment following line

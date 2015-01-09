@@ -34,7 +34,7 @@ body.boxed #contact-us {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
-  width: 60px;
+  width: 95px;
   height: 40px;
   background-color: white;
   background-color: rgba(255, 255, 255, 0.1);
@@ -43,6 +43,18 @@ body.boxed #contact-us {
 
 #contact_form textarea {
   min-height: 150px;
+}
+
+.navbar-right {
+  margin-top: 30px;
+}
+
+#header .navbar-default.navbar-collapsed-sm .navbar-nav > li > a span:hover {
+  color: #8dc153 !important;
+}
+
+#header .navbar-default.navbar-collapsed-sm .navbar-nav > li > a span {
+  height: 30px;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -84,6 +96,10 @@ a[href="javascript:;"] {
 
 .service-page table {
   font-size: 12px;
+}
+
+.use-welcome #contact-us {
+  display: none;
 }
 
 .welcome-bg {
@@ -164,22 +180,22 @@ body.error-page, body.countdown-page {
 }
 
 .hero-carousel .the1 {
-  background: url("http://i2.tietuku.com/599d670dcd815830.png") center 100px;
+  background: url("http://i2.tietuku.com/84c688ab8122a4ce.png") center 100px;
   /*background: url("../images/1_tiny_.png") center 100px;*/
 }
 
 .hero-carousel .the2 {
-  background: url("http://i2.tietuku.com/ece87ea7dff88d0f.png") center 100px;
+  background: url("http://i2.tietuku.com/599d670dcd815830.png") center 100px;
   /*background: url("../images/2_tiny_.png") center 100px;*/
 }
 
 .hero-carousel .the3 {
-  background: url("http://i2.tietuku.com/84c688ab8122a4ce.png") center 100px;
+  background: url("http://i2.tietuku.com/f1634604bbb49464.jpg") center 100px;
   /*background: url("../images/3_tiny_.png") center 100px;*/
 }
 
 .hero-carousel .the4 {
-  background: url("http://i2.tietuku.com/f1634604bbb49464.jpg") center 100px;
+  background: url("http://i2.tietuku.com/ece87ea7dff88d0f.png") center 100px;
   /*background: url("../images/4_tiny_.jpg") center 100px;*/
 }
 
