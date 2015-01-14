@@ -9,7 +9,7 @@ var themeStaticDir = __dirname + '/views/theme/' + config.theme + '/assets';
 var adminStaticDir = __dirname + '/views/admin/assets';
 app.configure(function() {
   app.set('port', config.port);
-  app.set('views', __dirname + '/views');
+  app.set('views', __dirname + '/views/theme/yohub');
   //app.set('files', __dirname + '/public');
   app.set('view engine', 'ejs');
   app.use(express.compress());

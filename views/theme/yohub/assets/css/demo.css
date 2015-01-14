@@ -49,6 +49,15 @@ body.boxed #contact-us {
   margin-top: 30px;
 }
 
+.foot-text {
+  margin-top: 10px;
+  font-size: 16px !important;
+}
+
+.info-box {
+  text-align: center;
+}
+
 #header .navbar-default.navbar-collapsed-sm .navbar-nav > li > a span:hover {
   color: #8dc153 !important;
 }

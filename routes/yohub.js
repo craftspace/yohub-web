@@ -14,7 +14,7 @@ var pageDao = require('../dao/page');
 var contactDao = require('../dao/contact');
 var commentDao = require('../dao/comment');
 function _index(req, res, next) {
-  res.render('theme/' + config.theme + '/index', {name: 'index'});
+  res.render('index', {name: 'index'});
   //postDao.count({}, function (err, count) {
   //  if (count == 0) {
   //    res.redirect("/admin/install");
@@ -47,41 +47,63 @@ function _index(req, res, next) {
   //      maxP: maxPage,
   //      nextP: nextPage
   //    };
-  //    res.render('theme/' + config.theme + '/index', index_obj);
+  //    res.render('/index', index_obj);
   //  });
   //});
 }
 function _home(req, res, next) {
-  res.render('theme/' + config.theme + '/index', {name: 'index', direct: true});
+  res.render('index', {name: 'index', direct: true});
+}
+function _home_en(req, res, next) {
+  res.render('index_en', {
+    name: 'index',
+    direct: true,
+    layout: 'layout_en'
+  });
 }
 function _tag(req, res, next) {
-  postDao.findByTag(req.params.tag, function (err, result) {
+  postDao.findByTag(req.params.tag, function(err, result) {
     if (err) return;
     for (var i = 0; i < result.length; i++) {
       result[i].content = marked(result[i].content);
     }
     var tag_obj = {name: config.name, title: config.name, posts: result, tag_name: req.params.tag};
-    res.render('theme/' + config.theme + '/tag', tag_obj);
+    res.render('/tag', tag_obj);
   });
 }
 function _services(req, res, next) {
-  res.render('theme/' + config.theme + '/services', {name: 'services'});
+  res.render('services', {name: 'services'});
+}
+function _services_en(req, res, next) {
+  res.render('services_en', {name: 'services', layout: 'layout_en'});
 }
 function _feature(req, res, next) {
-  res.render('theme/' + config.theme + '/feature', {name: 'feature'});
+  res.render('feature', {name: 'feature'});
+}
+function _feature_en(req, res, next) {
+  res.render('feature_en', {name: 'feature', layout: 'layout_en'});
 }
 function _about_us(req, res, next) {
-  res.render('theme/' + config.theme + '/about_us', {name: 'about_us'});
+  res.render('about_us', {name: 'about_us'});
+}
+function _about_us_en(req, res, next) {
+  res.render('about_us_en', {name: 'about_us', layout: 'layout_en'});
 }
 function _contact(req, res, next) {
-  res.render('theme/' + config.theme + '/contact', {name: 'contact'});
+  res.render('contact', {name: 'contact'});
+}
+function _contact_en(req, res, next) {
+  res.render('contact_en', {name: 'contact', layout: 'layout_en'});
 }
 function _contact_form(req, res, next) {
-  res.render('theme/' + config.theme + '/contact_form', {name: 'contact_form', simple: true});
+  res.render('contact_form', {name: 'contact_form', simple: true});
+}
+function _contact_form_en(req, res, next) {
+  res.render('contact_form_en', {name: 'contact_form', simple: true, layout: 'layout_en'});
 }
 function _files(req, res, next) {
   var path = req.path;
-  fs.exists(path, function (exists) {
+  fs.exists(path, function(exists) {
     if (exists) {
       res.download(path);
     } else {
@@ -90,17 +112,17 @@ function _files(req, res, next) {
   });
 }
 function _page(req, res, next) {
-  pageDao.get({'slug': req.params.slug}, function (err, page) {
+  pageDao.get({'slug': req.params.slug}, function(err, page) {
     if (!err && page != null) {
       page.content = marked(page.content);
       //如果不存在 content_html，更新
       if (!page.content_html) {
         page.content_html = marked(page.content);
-        pageDao.update(page.id, {content_html: page.content_html}, function () {
+        pageDao.update(page.id, {content_html: page.content_html}, function() {
         })
       }
       page.page_title = config.name + " › " + page.title;
-      res.render('theme/' + config.theme + '/page', {page: page, name: config.name, title: page.page_title});
+      res.render('page', {page: page, name: config.name, title: page.page_title});
     }
     else {
       _pageNotFound(req, res);
@@ -119,7 +141,7 @@ function _comment(req, res, next) {
     console.log("no_author not is empty");
     return res.redirect("/fuck-spam-comment");
   } else {
-    postDao.get({id: id}, function (err, post) {
+    postDao.get({id: id}, function(err, post) {
       if (!err && post != null) {
         var comment = {
           post_id: req.body.id,
@@ -145,7 +167,7 @@ function _comment(req, res, next) {
           }
         }
         comment.avatar = gravatar.url(comment.email, {s: '36', r: 'pg', d: 'mm'});
-        commentDao.insert(comment, function (err, comment) {
+        commentDao.insert(comment, function(err, comment) {
           if (!err && comment && comment.length == 1) {
             //配置了 akismet key 而且不为空时，进行 akismet spam检查
             if (config.akismet_options && config.akismet_options.apikey != "") {
@@ -157,12 +179,12 @@ function _comment(req, res, next) {
                 comment_author_email: comment[0].email,
                 comment_author_url: comment[0].url,
                 comment_type: "comment"
-              }, function (err, spam) {
+              }, function(err, spam) {
                 //发现SPAM
                 if (spam) {
                   console.log('Spam caught.');
                   comment[0].status = "0";//状态： 1：正常，0：SPAM
-                  commentDao.save(comment[0], function (err, result) {
+                  commentDao.save(comment[0], function(err, result) {
                     if (!err)
                       console.log("save comment status success");
                     else
@@ -185,7 +207,7 @@ function _feed(req, res) {
     res.statusCode = 404;
     res.send('Please set `rss` in config.js');
   }
-  postDao.findAll(0, parseInt(config.rss.max_rss_items), function (err, result) {
+  postDao.findAll(0, parseInt(config.rss.max_rss_items), function(err, result) {
     if (err) {
       return next(err);
     }
@@ -224,14 +246,14 @@ function _feed(req, res) {
 }
 function _share(req, res) {
   var limit = 999;
-  photoDao.all({}, limit, function (err, photos) {
-    res.render('theme/' + config.theme + '/share', {
+  photoDao.all({}, limit, function(err, photos) {
+    res.render('share', {
       photos: photos, name: 'share'
     });
   });
 }
 function _post(req, res, next) {
-  postDao.get({id: req.params.id}, function (err, post) {
+  postDao.get({id: req.params.id}, function(err, post) {
     if (err) {
       res.statusCode = 500;
       res.send('500');
@@ -242,20 +264,20 @@ function _post(req, res, next) {
       //如果不存在 content_html，更新
       if (!post.content_html) {
         post.content_html = marked(post.content);
-        postDao.update(post.id, {content_html: post.content_html}, function () {
+        postDao.update(post.id, {content_html: post.content_html}, function() {
         })
       }
       var page_title = config.name + " › " + post.title;
-      commentDao.findByPostId(post.id, function (err, comments) {
+      commentDao.findByPostId(post.id, function(err, comments) {
         for (var i = 0; i < comments.length; i++) {
           if (!comments[i].avatar) {
             comments[i].avatar = gravatar.url(comments[i].email, {s: '36', r: 'pg', d: 'mm'});
-            commentDao.updateAvater(comments[i]._id.toString(), comments[i].avatar, function () {
+            commentDao.updateAvater(comments[i]._id.toString(), comments[i].avatar, function() {
             })
           }
         }
         if (!err) {
-          res.render('theme/' + config.theme + '/post', {
+          res.render('post', {
             title: page_title,
             post: post,
             comments: comments,
@@ -270,11 +292,11 @@ function _post(req, res, next) {
   });
 }
 function _archives(req, res) {
-  var sortNumber = function (a, b) {
+  var sortNumber = function(a, b) {
     return a.year < b.year
   };
   var archiveList = [];
-  postDao.all(function (err, archives) {
+  postDao.all(function(err, archives) {
     //for (var i = 0; i < archives.length; i++) {
     //  var year = new Date(archives[i].created).getFullYear();
     //  if (archiveList[year] === undefined)
@@ -282,7 +304,7 @@ function _archives(req, res) {
     //  archiveList[year].archives.push(archives[i]);
     //}
     //archiveList = archiveList.sort(sortNumber);
-    res.render('theme/' + config.theme + '/post', {
+    res.render('post', {
       title: config.name + " › 文章存档",
       archives: archives,
       name: "post"
@@ -291,27 +313,27 @@ function _archives(req, res) {
 }
 function _pageNotFound(req, res) {
   console.log('404 handler, URL' + req.originalUrl);
-  res.render('theme/' + config.theme + '/404', {
+  res.render('404', {
     layout: true, status: 404, title: '页面未找到 - 404', name: '404'
   });
 }
 // URL /
 exports.index = _index;
 exports.home = _home;
-// URL: /post/id
 exports.services = _services;
-// URL: /page/slug
 exports.post = _archives;
 exports.share = _share;
-// URL /tag/*
 exports.feature = _feature;
-// POST URL: /comment
 exports.about_us = _about_us;
 exports.contact_form = _contact_form;
-// URL: /feed
 exports.contact = _contact;
 exports.files = _files;
-// URL: /photo
-//exports.photo = _photo;
-// URL: /404
+exports.home_en = _home_en;
+exports.services_en = _services_en;
+exports.post = _archives;
+exports.share = _share;
+exports.feature_en = _feature_en;
+exports.about_us_en = _about_us_en;
+exports.contact_form_en = _contact_form_en;
+exports.contact_en = _contact_en;
 exports.pageNotFound = _pageNotFound;
