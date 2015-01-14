@@ -15,9 +15,9 @@ module.exports = function(app) {
   app.get('/feature_en', yohub.feature_en);
   app.get('/services_en', yohub.services_en);
   app.get('/contact_en', yohub.contact_en);
-  app.get('/share', yohub.share);
-  app.get('/post', yohub.post);
-  app.get('/post/:id', yohub.post);
+  app.get('/share_en', yohub.share_en);
+  app.get('/post_en', yohub.post_en);
+  app.get('/post/:id', yohub.post_en);
   app.get('/about_us_en', yohub.about_us_en);
   app.get('/contact_form_en', yohub.contact_form_en);
   app.get('/files/:string', yohub.files);

@@ -252,6 +252,15 @@ function _share(req, res) {
     });
   });
 }
+function _share_en(req, res) {
+  var limit = 999;
+  photoDao.all({}, limit, function(err, photos) {
+    res.render('share', {
+      photos: photos, name: 'share',
+      layout: 'layout_en'
+    });
+  });
+}
 function _post(req, res, next) {
   postDao.get({id: req.params.id}, function(err, post) {
     if (err) {
@@ -311,6 +320,27 @@ function _archives(req, res) {
     });
   });
 }
+function _archives_en(req, res) {
+  var sortNumber = function(a, b) {
+    return a.year < b.year
+  };
+  var archiveList = [];
+  postDao.all(function(err, archives) {
+    //for (var i = 0; i < archives.length; i++) {
+    //  var year = new Date(archives[i].created).getFullYear();
+    //  if (archiveList[year] === undefined)
+    //    archiveList[year] = {year: year, archives: []};
+    //  archiveList[year].archives.push(archives[i]);
+    //}
+    //archiveList = archiveList.sort(sortNumber);
+    res.render('post', {
+      title: config.name + " › 文章存档",
+      archives: archives,
+      name: "post",
+      layout: "layout_en"
+    });
+  });
+}
 function _pageNotFound(req, res) {
   console.log('404 handler, URL' + req.originalUrl);
   res.render('404', {
@@ -330,8 +360,8 @@ exports.contact = _contact;
 exports.files = _files;
 exports.home_en = _home_en;
 exports.services_en = _services_en;
-exports.post = _archives;
-exports.share = _share;
+exports.post_en = _archives_en;
+exports.share_en = _share_en;
 exports.feature_en = _feature_en;
 exports.about_us_en = _about_us_en;
 exports.contact_form_en = _contact_form_en;
