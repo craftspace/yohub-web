@@ -143,12 +143,17 @@ a[href="javascript:;"] {
 }
 
 .aboutus-page .panel-body {
-  height: 300px;
+  min-height: 400px;
 }
 
 #footer .icon-box {
   clear: both;
   margin-bottom: -5px;
+}
+
+#footer #footer-main .title {
+  text-align: left;
+  padding-left: 60px;
 }
 
 #wrapper {
