@@ -55,7 +55,14 @@ body.boxed #contact-us {
 }
 
 .info-box {
+  display: table;
   text-align: center;
+  height: 250px;
+}
+
+.info-box .inner {
+  display: table-cell;
+  vertical-align: middle;
 }
 
 #header .navbar-default.navbar-collapsed-sm .navbar-nav > li > a span:hover {
@@ -153,7 +160,7 @@ a[href="javascript:;"] {
 
 #footer #footer-main .title {
   text-align: left;
-  padding-left: 60px;
+  padding-left: 40px;
 }
 
 #wrapper {
