@@ -21,6 +21,7 @@ module.exports = function(app) {
   app.get('/about_us_en', yohub.about_us_en);
   app.get('/contact_form_en', yohub.contact_form_en);
   app.get('/files/:string', yohub.files);
+  app.post('/submit_form', yohub.submit_form);
   //app.get('/tag/:tag', yohub.tag);
   app.get('/admin', admin.authUser, admin.index);
   app.get('/admin/install', admin.install);

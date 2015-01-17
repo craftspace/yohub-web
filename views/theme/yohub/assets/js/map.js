@@ -37,7 +37,7 @@ function addMapControl() {
 
 //标注点数组
 var markerArr = [{
-  title: "御虎企业管理咨询（上海）有限公司",
+  title: "御虎企业管理咨询（上海）有限公司<br/>Yohub Management Consulting (Shanghai) Co., Ltd",
   content: "我的备注",
   point: "121.454222|31.204422",
   isOpen: 0,

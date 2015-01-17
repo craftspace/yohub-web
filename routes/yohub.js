@@ -101,6 +101,29 @@ function _contact_form(req, res, next) {
 function _contact_form_en(req, res, next) {
   res.render('contact_form_en', {name: 'contact_form', simple: true, layout: 'layout_en'});
 }
+
+function _submit_form(req, res, next) {
+  var contact = {
+    'Contacts': req.body.name,
+    'Company': req.body.corp,
+    'E-mail': req.body.email,
+    'Mobile': req.body.mobile,
+    'Direct Line': req.body.tel,
+    'Service Location': req.body.place,
+    'From': req.body.start,
+    'To': req.body.end,
+    'Occupancy': req.body.industry,
+    'Other': req.body.desc,
+    'level': req.body.level
+  };
+  contactDao.insert(contact, function (err, result) {
+    if (!err) {
+      sendMail.sendMail(JSON.stringify(result, null, 2));
+      res.send(200);
+      res.end();
+    }
+  });
+}
 function _files(req, res, next) {
   var path = req.path;
   fs.exists(path, function(exists) {
@@ -358,6 +381,7 @@ exports.about_us = _about_us;
 exports.contact_form = _contact_form;
 exports.contact = _contact;
 exports.files = _files;
+exports.submit_form = _submit_form;
 exports.home_en = _home_en;
 exports.services_en = _services_en;
 exports.post_en = _archives_en;
