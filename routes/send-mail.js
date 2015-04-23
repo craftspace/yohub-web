@@ -77,7 +77,7 @@ exports.sendMail = function (content) {
   message.html = content;
   transport.sendMail(message, function (error) {
     if (error) {
-      console.log('Error occured');
+      console.log('Error occurred');
       console.log(error.message);
       return;
     }
