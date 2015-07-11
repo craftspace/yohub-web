@@ -13,8 +13,9 @@ var postDao = require('../dao/post');
 var pageDao = require('../dao/page');
 var contactDao = require('../dao/contact');
 var commentDao = require('../dao/comment');
+var filePrefix = 'theme/' + config.theme + '/'
 function _index(req, res, next) {
-  res.render('index', {name: 'index'});
+  res.render(filePrefix + 'index', {name: 'index'});
   //postDao.count({}, function (err, count) {
   //  if (count == 0) {
   //    res.redirect("/admin/install");
@@ -47,18 +48,18 @@ function _index(req, res, next) {
   //      maxP: maxPage,
   //      nextP: nextPage
   //    };
-  //    res.render('/index', index_obj);
+  //    res.render(filePrefix + 'index', index_obj);
   //  });
   //});
 }
 function _home(req, res, next) {
-  res.render('index', {name: 'index', direct: true});
+  res.render(filePrefix + 'index', {name: 'index', direct: true});
 }
 function _home_en(req, res, next) {
-  res.render('index_en', {
+  res.render(filePrefix + 'index_en', {
     name: 'index',
     direct: true,
-    layout: 'layout_en'
+    use_en: true
   });
 }
 function _tag(req, res, next) {
@@ -68,38 +69,38 @@ function _tag(req, res, next) {
       result[i].content = marked(result[i].content);
     }
     var tag_obj = {name: config.name, title: config.name, posts: result, tag_name: req.params.tag};
-    res.render('/tag', tag_obj);
+    res.render(filePrefix + 'tag', tag_obj);
   });
 }
 function _services(req, res, next) {
-  res.render('services', {name: 'services'});
+  res.render(filePrefix + 'services', {name: 'services'});
 }
 function _services_en(req, res, next) {
-  res.render('services_en', {name: 'services', layout: 'layout_en'});
+  res.render(filePrefix + 'services_en', {name: 'services', use_en: true});
 }
 function _feature(req, res, next) {
-  res.render('feature', {name: 'feature'});
+  res.render(filePrefix + 'feature', {name: 'feature'});
 }
 function _feature_en(req, res, next) {
-  res.render('feature_en', {name: 'feature', layout: 'layout_en'});
+  res.render(filePrefix + 'feature_en', {name: 'feature', use_en: true});
 }
 function _about_us(req, res, next) {
-  res.render('about_us', {name: 'about_us'});
+  res.render(filePrefix + 'about_us', {name: 'about_us'});
 }
 function _about_us_en(req, res, next) {
-  res.render('about_us_en', {name: 'about_us', layout: 'layout_en'});
+  res.render(filePrefix + 'about_us_en', {name: 'about_us', use_en: true});
 }
 function _contact(req, res, next) {
-  res.render('contact', {name: 'contact'});
+  res.render(filePrefix + 'contact', {name: 'contact'});
 }
 function _contact_en(req, res, next) {
-  res.render('contact_en', {name: 'contact', layout: 'layout_en'});
+  res.render(filePrefix + 'contact_en', {name: 'contact', use_en: true});
 }
 function _contact_form(req, res, next) {
-  res.render('contact_form', {name: 'contact_form', simple: true});
+  res.render(filePrefix + 'contact_form', {name: 'contact_form', simple: true});
 }
 function _contact_form_en(req, res, next) {
-  res.render('contact_form_en', {name: 'contact_form', simple: true, layout: 'layout_en'});
+  res.render(filePrefix + 'contact_form_en', {name: 'contact_form', simple: true, use_en: true});
 }
 
 function _submit_form(req, res, next) {
@@ -116,7 +117,7 @@ function _submit_form(req, res, next) {
     'Other': req.body.desc,
     'level': req.body.level
   };
-  contactDao.insert(contact, function (err, result) {
+  contactDao.insert(contact, function(err, result) {
     if (!err) {
       sendMail.sendMail(JSON.stringify(result, null, 2));
       res.send(200);
@@ -145,7 +146,7 @@ function _page(req, res, next) {
         })
       }
       page.page_title = config.name + " › " + page.title;
-      res.render('page', {page: page, name: config.name, title: page.page_title});
+      res.render(filePrefix + 'page', {page: page, name: config.name, title: page.page_title});
     }
     else {
       _pageNotFound(req, res);
@@ -270,7 +271,7 @@ function _feed(req, res) {
 function _share(req, res) {
   var limit = 999;
   photoDao.all({}, limit, function(err, photos) {
-    res.render('share', {
+    res.render(filePrefix + 'share', {
       photos: photos, name: 'share'
     });
   });
@@ -278,9 +279,9 @@ function _share(req, res) {
 function _share_en(req, res) {
   var limit = 999;
   photoDao.all({}, limit, function(err, photos) {
-    res.render('share', {
+    res.render(filePrefix + 'share', {
       photos: photos, name: 'share',
-      layout: 'layout_en'
+      use_en: true
     });
   });
 }
@@ -309,7 +310,7 @@ function _post(req, res, next) {
           }
         }
         if (!err) {
-          res.render('post', {
+          res.render(filePrefix + 'post', {
             title: page_title,
             post: post,
             comments: comments,
@@ -336,7 +337,7 @@ function _archives(req, res) {
     //  archiveList[year].archives.push(archives[i]);
     //}
     //archiveList = archiveList.sort(sortNumber);
-    res.render('post', {
+    res.render(filePrefix + 'post', {
       title: config.name + " › 文章存档",
       archives: archives,
       name: "post"
@@ -344,9 +345,9 @@ function _archives(req, res) {
   });
 }
 function _archives_en(req, res) {
-  var sortNumber = function(a, b) {
-    return a.year < b.year
-  };
+  //var sortNumber = function(a, b) {
+  //  return a.year < b.year
+  //};
   var archiveList = [];
   postDao.all(function(err, archives) {
     //for (var i = 0; i < archives.length; i++) {
@@ -356,7 +357,7 @@ function _archives_en(req, res) {
     //  archiveList[year].archives.push(archives[i]);
     //}
     //archiveList = archiveList.sort(sortNumber);
-    res.render('post', {
+    res.render(filePrefix + 'post', {
       title: config.name + " › 文章存档",
       archives: archives,
       name: "post",
@@ -366,7 +367,7 @@ function _archives_en(req, res) {
 }
 function _pageNotFound(req, res) {
   console.log('404 handler, URL' + req.originalUrl);
-  res.render('404', {
+  res.render(filePrefix + '404', {
     layout: true, status: 404, title: '页面未找到 - 404', name: '404'
   });
 }
