@@ -7802,7 +7802,8 @@ pre {
 .portfolio-boxes .portfolio-box {
   position: relative;
   margin-top: 20px;
-  text-align: center; }
+  text-align: center;
+  min-height: 200px;}
   .portfolio-boxes .portfolio-box a {
     text-decoration: none;
     display: block;

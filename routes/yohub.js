@@ -13,7 +13,7 @@ var postDao = require('../dao/post');
 var pageDao = require('../dao/page');
 var contactDao = require('../dao/contact');
 var commentDao = require('../dao/comment');
-var filePrefix = 'theme/' + config.theme + '/'
+var filePrefix = 'theme/' + config.theme + '/';
 function _index(req, res, next) {
   res.render(filePrefix + 'index', {name: 'index'});
   //postDao.count({}, function (err, count) {
