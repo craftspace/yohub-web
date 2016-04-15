@@ -6,7 +6,7 @@
   <div class="quick"><a href="/admin/photo/write"><span>创建</span></a></div>
 </div>
 <ul class="photo-list clearfix">
-  <% photos.forEach(function(item){ %>
+  <% photos&&photos.forEach(function(item){ %>
   <li class="photo-item">
     <a href="/admin/photo/edit/<%=item.photo_id%>">
       <img src="<%=item.preview_url%>" alt="<%=item.title%>"

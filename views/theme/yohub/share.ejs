@@ -4,7 +4,7 @@
       <div id="main-content">
         <div class="container">
           <div class="row portfolio-boxes isotope" id="portfolio-container">
-            <% photos.forEach(function(item){ %>
+            <% photos&&photos.forEach(function(item){ %>
             <div class="col-sm-3 portfolio-box portfolio-filter-photography portfolio-filter-webdesign portfolio-item isotope-item">
               <a href="<%=item.file_path%>" title="<%=item.title%>" target="_blank">
                 <div class="image-link">
