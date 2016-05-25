@@ -2,61 +2,34 @@
   <ul>
     <li><a href="/admin">后台首页</a><span> ›</span></li>
     <li><a href="/admin/post">案例列表</a><span> ›</span></li>
-    <li><a href="/admin/post/edit/<%=post.id%>"><%=post.title%></a><span> ›</span></li>
+    <li><a href="/admin/post/edit">设置相片</a></li>
   </ul>
-  <div class="quick"><a href="/admin/post/write" title="创建案例"><span>创建案例</span></a></div>
 </div>
-<form id='write_post' method='post'>
-  <div id='post_info'>
-    <div class='item title'>
-      <label for='post_title'><span>Title</span></label>
-      <input type='text' name='title' id='post_title' value='<%=post.title%>' required="" placeholder="标题"/>
+<div class="photo-list">
+  <form class="photo-body" method='post' enctype='multipart/form-data'>
+    <div class="form-item"><strong>设置相片路径：</strong></div>
+    <div class="form-item">
+      标题 <input type="text" name="title" value="<%=post.title%>"/>
     </div>
-    <div class='item slug'>
-      <label for='post_slug'><span>Slug</span></label>
-      <input type='text' name='slug' id='post_slug' value='<%=post.slug%>' required="" placeholder="别名"/>
+    <div class="form-item">
+      描述 <textarea name="description"><%=post.description%></textarea>
     </div>
-    <div class='item created'>
-      <label for='post_created'><span>Created</span></label>
-      <input type='text' name='created' id='post_created' value='<%=post.created%>' required=''/>
+    <!--<div class="form-item">-->
+    <!--原图地址 <input type="text" class="photo-url" name="raw_url" value="<%=post.raw_url%>"/>-->
+    <!--<div class="preview-raw">-->
+    <!--<img src="<%=post.raw_url%>"/>-->
+    <!--</div>-->
+    <!--</div>-->
+    <div class="form-item">
+      缩略图地址 <input type="text" class="photo-url" name="preview_url" value="<%=post.preview_url%>"/>
+      <div class="preview-small">
+        <img src="<%=post.preview_url%>"/>
+      </div>
     </div>
-    <div class='item tags'>
-      <label for='post_tags'><span>Tags</span></label>
-      <%if(post.tags != undefined){%>
-      <input type='text' name='tags' id='post_tags' value='<%=post.tags%>' required='' placeholder="标签">
-      <%}else{%>
-      <input type='text' name='tags' id='post_tags' required='' placeholder="标签，在英文逗号分割">
-      <%}%>
+    <div class="form-item">
+      附件 <input type="file" name="thumbnail"/>
     </div>
-    <div class="clearfix"></div>
-  </div>
-  <div id='content'>
-    <div class="wmd-panel">
-      <div id="wmd-button-bar"></div>
-      <textarea class="wmd-input post_content" name='content' id="wmd-input" required=''><%=post.content%></textarea>
-    </div>
-  </div>
-  <div id='meta'>
-    <input type='hidden' name='post_id' value='<%=post.id%>'>
-    <button class='btn btn-small'><a id='post-it'>Edit Done</a></button>
-  </div>
-  <div class="clearfix"></div>
-  <div id="preview">
-    <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
-  </div>
-</form>
-<script>
-  $('input#post_created').simpleDatepicker({ startdate: 2009, enddate: 2013 });
-  (function() {
-    var converter = Markdown.getSanitizingConverter();
-    var editor = new Markdown.Editor(converter);
-    editor.run();
-//    window.onbeforeunload = function(){
-//      return '你正在编辑日志，确定不保存编辑内容吗？';
-//    };
-//
-//    $("#post-it").click(function(){
-//      window.onbeforeunload = null;
-//    });
-  })();
-</script>
+    <input type="hidden" name="post_id" value="<%=post.post_id%>"/>
+    <input type="submit" value="保存" class="form-save"/>
+  </form>
+</div>

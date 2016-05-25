@@ -7,6 +7,7 @@ module.exports = function(app) {
   app.get('/services', yohub.services);
   app.get('/contact', yohub.contact);
   app.get('/share', yohub.share);
+  app.get('/case', yohub.case);
   app.get('/post', yohub.post);
   app.get('/post/:id', yohub.post);
   app.get('/about_us', yohub.about_us);
@@ -32,9 +33,9 @@ module.exports = function(app) {
   app.get('/admin/post', admin.authUser, admin.postIndex);
   app.get('/admin/post/write', admin.authUser, admin.postWrite);
   app.post('/admin/post/write', admin.authUser, admin.postWrite);
-  app.get('/admin/post/edit/:id', admin.authUser, admin.postEdit);
-  app.post('/admin/post/edit/:id', admin.authUser, admin.postEdit);
-  app.get('/admin/post/delete/:id', admin.authUser, admin.postDelete);
+  app.get('/admin/post/edit/:post_id', admin.authUser, admin.postEdit);
+  app.post('/admin/post/edit/:post_id', admin.authUser, admin.postEdit);
+  app.get('/admin/post/delete/:post_id', admin.authUser, admin.postDelete);
   app.get('/admin/page', admin.authUser, admin.pageIndex);
   app.get('/admin/page/write', admin.authUser, admin.pageWrite);
   app.post('/admin/page/write', admin.authUser, admin.pageWrite);

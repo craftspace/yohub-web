@@ -5,7 +5,10 @@
   <meta content="风险管理，风险咨询" name="keywords">
   <meta content="御虎企业管理咨询（上海）有限公司，主要经营风险管理和风险咨询业务，主要服务大中华地区，辐射东南亚地区。"
         name="description">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="yes" name="apple-touch-fullscreen">
+  <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
   <!--[if IE]>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <![endif]-->
@@ -30,12 +33,17 @@
   <div class="container">
     <nav class="navbar navbar-collapsed-sm navbar-default" id="nav" role="navigation">
       <div class="navbar-header">
+        <!--<button style="border-color:#8dc153;background-color:#8dc153;" class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar"-->
+                <!--aria-controls="bs-navbar" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span-->
+              <!--class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>-->
         <a class="navbar-brand" href="/">
           <img src="/theme/assets/images/logo_120.png" alt="yohub-logo"/>
           <img src="/theme/assets/images/yohub_400.png" alt="御虎企业管理咨询（上海）有限公司"/>
         </a>
       </div>
-      <div class="collapse navbar-collapse navbar-header-collapse">
+    </nav>
+    <nav class="yh-nav navbar-collapsed-sm navbar-default" style="margin-top: -100px;">
+      <div class="collapse navbar-collapse navbar-header-collapse in" id="bs-navbar">
         <ul class="nav navbar-nav navbar-right">
           <li <%if (name=="index"){%>class="active"<%}%>>
             <a href="/">
@@ -62,8 +70,8 @@
               <span>知识分享</span>
             </a>
           </li>
-          <li style="display: none;" <%if (name=="post"){%>class="active"<%}%>>
-            <a href="/post">
+          <li <%if (name=="case"){%>class="active"<%}%>>
+            <a href="/case">
               <span>服务案例</span>
             </a>
           </li>
@@ -115,7 +123,7 @@
                 <i class="fa fa-user"></i>
               </div>
               <div class="content">
-                业务拓展部总经理 张寅雪先生 （Mr. Iven Zhang）
+                市场拓展部经理 张寅雪先生 （Mr. Iven Zhang）
               </div>
             </div>
             <div class="icon-box">

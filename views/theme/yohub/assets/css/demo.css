@@ -23,7 +23,7 @@ body.boxed #contact-us {
 #contact-us {
   cursor: pointer;
   display: block;
-  right: 10px;
+  right: 100px !important;
   border: 2px solid #eaedf2;
   color: #8dc153;
   line-height: 35px;
@@ -37,7 +37,7 @@ body.boxed #contact-us {
   width: 95px;
   height: 40px;
   background-color: white;
-  background-color: rgba(255, 255, 255, 0.1);
+  /*background-color: rgba(255, 255, 255, 0.1);*/
   z-index: 1002;
 }
 
@@ -150,7 +150,7 @@ a[href="javascript:;"] {
 }
 
 .aboutus-page .panel-body {
-  min-height: 300px;
+  min-height: 350px;
 }
 
 #footer .icon-box {
@@ -164,7 +164,7 @@ a[href="javascript:;"] {
 }
 
 /*#wrapper {*/
-  /*background: url("../images/demo/bg_wrapper.jpg") center -130px;*/
+/*background: url("../images/demo/bg_wrapper.jpg") center -130px;*/
 /*}*/
 
 #header {
@@ -172,10 +172,10 @@ a[href="javascript:;"] {
 }
 
 /*@media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {*/
-  /*#wrapper {*/
-    /*background-image: url("../images/demo/bg_wrapper@2x.jpg");*/
-    /*background-size: 1920px 535px;*/
-  /*}*/
+/*#wrapper {*/
+/*background-image: url("../images/demo/bg_wrapper@2x.jpg");*/
+/*background-size: 1920px 535px;*/
+/*}*/
 /*}*/
 
 body.error-page, body.countdown-page {
@@ -338,10 +338,25 @@ body.error-page, body.countdown-page {
   }
 
   #header .navbar-default.navbar-collapsed-sm .navbar-collapse {
-
+    background-color: transparent;
   }
 
   .navbar-brand img {
 
+  }
+}
+
+@media (max-width: 767px) {
+  .yh-nav {
+    margin-top: 30px !important;
+  }
+
+  .icon-boxes {
+    font-size: 1.2em;
+    line-height: 2em;
+  }
+
+  .icon-boxes .icon {
+    display: none !important;
   }
 }

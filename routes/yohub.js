@@ -96,6 +96,23 @@ function _contact(req, res, next) {
 function _contact_en(req, res, next) {
   res.render(filePrefix + 'contact_en', {name: 'contact', use_en: true});
 }
+function _case(req, res, next) {
+  var limit = 999;
+  postDao.all({}, limit, function(err, posts) {
+    res.render(filePrefix + 'case', {
+      posts: posts, name: 'case'
+    });
+  });
+}
+function _case_en(req, res, next) {
+  var limit = 999;
+  postDao.all({}, limit, function(err, posts) {
+    res.render(filePrefix + 'case_en', {
+      posts: posts, name: 'case', use_en: true
+    });
+  });
+  res.render(filePrefix + 'case_en', {name: 'case', use_en: true});
+}
 function _contact_form(req, res, next) {
   res.render(filePrefix + 'contact_form', {name: 'contact_form', simple: true});
 }
@@ -391,4 +408,6 @@ exports.feature_en = _feature_en;
 exports.about_us_en = _about_us_en;
 exports.contact_form_en = _contact_form_en;
 exports.contact_en = _contact_en;
+exports.case = _case;
+exports.case_en = _case_en;
 exports.pageNotFound = _pageNotFound;

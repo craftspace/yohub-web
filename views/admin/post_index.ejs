@@ -3,21 +3,19 @@
     <li><a href="/admin">后台首页</a><span> ›</span></li>
     <li><a href="/admin/post">案例列表</a></li>
   </ul>
-  <div class="quick"><a href="/admin/post/write" title="创建案例"><span>创建案例</span></a></div>
+  <div class="quick"><a href="/admin/post/write"><span>创建</span></a></div>
 </div>
-<div id="post-list">
-  <ul>
-    <% post_list.forEach(function(item){ %>
-    <li>
-      <a href='/admin/post/edit/<%=item.id%>'><%=item.title%></a>
-
-      <div class='action'>
-          <span class='edit'>
-            <a href='/post/<%=item.id%>' target='_blank'>预览</a>
-            <a href='/admin/post/delete/<%=item.id%>'>删除</a>
-          </span>
-      </div>
-    </li>
-    <% }); %>
-  </ul>
-</div>
+<ul class="photo-list clearfix">
+  <% posts&&posts.forEach(function(item){ %>
+  <li class="photo-item">
+    <a href="/admin/post/edit/<%=item.post_id%>">
+      <img src="<%=item.preview_url%>" alt="<%=item.title%>"
+           onerror="this.src='http://r.ph.126.net/image/default/duser.png'"/>
+    </a>
+    <p><%=item.title%></p>
+    <a href="/share">预览</a>
+    <a href="/admin/post/edit/<%=item.post_id%>">编辑</a>
+    <a href="/admin/post/delete/<%=item.post_id%>">删除</a>
+  </li>
+  <% }); %>
+</ul>
