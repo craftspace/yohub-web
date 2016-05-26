@@ -1,0 +1,20 @@
+<body class="case-detail-page">
+<div id="wrapper">
+  <div id="main" role="main">
+    <div id="main-content">
+      <div class="container">
+        <div class="row portfolio-boxes isotope" id="portfolio-container">
+          <div class="portfolio-box portfolio-filter-photography portfolio-filter-webdesign portfolio-item isotope-item">
+            <!--<a href="<%=post.file_path%>" title="<%=post.title%>" target="_blank">-->
+            <h3 class="title"><%=post.title%></h3>
+            <img class="img-responsive img-rounded center-block" alt="<%=post.title%>"
+                   src="<%=post.preview_url%>" style="max-width: 600px;">
+              <div style="text-align: left;"><%-post.description%></p>
+            <!--</a>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

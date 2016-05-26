@@ -1,4 +1,4 @@
-<body class="share-page">
+<body class="share-page case-page">
 <div id="wrapper">
   <div id="main" role="main">
     <div id="main-content">
@@ -6,14 +6,14 @@
         <div class="row portfolio-boxes isotope" id="portfolio-container">
           <% posts&&posts.forEach(function(item){ %>
           <div class="col-sm-3 portfolio-box portfolio-filter-photography portfolio-filter-webdesign portfolio-item isotope-item">
-            <a href="<%=item.file_path%>" title="<%=item.title%>" target="_blank">
+            <a style="text-align: left" href="/case/<%=item.post_id%>" title="<%=item.title%>" target="_blank">
               <div class="image-link">
                 <i class="fa fa-search"></i>
                 <img class="img-responsive img-rounded center-block" alt="<%=item.title%>" width="263" height="171"
                      src="<%=item.preview_url%>" onerror="this.src='http://r.ph.126.net/image/default/duser.png'">
               </div>
-              <h3 class="title"><%=item.title%></h3>
-              <p class="category"><%=item.description%></p>
+              <h3><%=item.title%></h3>
+              <!--<p class="category"><%-item.description%></p>-->
             </a>
           </div>
           <% }); %>

@@ -104,6 +104,15 @@ function _case(req, res, next) {
     });
   });
 }
+function _case_detail(req, res, next) {
+  var id = req.params.id;
+  if (id) {
+    postDao.findByPostId(id, function(err, post) {
+      if (post != null)
+        res.render(filePrefix + 'case_detail', {name: 'case', post: post});
+    });
+  }
+}
 function _case_en(req, res, next) {
   var limit = 999;
   postDao.all({}, limit, function(err, posts) {
@@ -410,4 +419,5 @@ exports.contact_form_en = _contact_form_en;
 exports.contact_en = _contact_en;
 exports.case = _case;
 exports.case_en = _case_en;
+exports.case_detail = _case_detail;
 exports.pageNotFound = _pageNotFound;

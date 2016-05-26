@@ -1,3 +1,9 @@
+<script src="/libs/jquery.min.js"></script>
+<script src="/libs/cal.js"></script>
+<script src="/libs/pagedown/Markdown.Converter.js"></script>
+<script src="/libs/pagedown/Markdown.Sanitizer.js"></script>
+<script src="/libs/pagedown/Markdown.Editor.js"></script>
+
 <div id="nav">
   <ul>
     <li><a href="/admin">后台首页</a><span> ›</span></li>
@@ -13,7 +19,7 @@
       标题 <input type="text" name="title"/>
     </div>
     <div class="form-item">
-      描述 <textarea name="description"></textarea>
+      描述 <textarea class="wmd-input post_content" name="description"></textarea>
     </div>
     <!--<div class="form-item">-->
     <!--原图地址 <input type="text" class="photo-url" name="raw_url"/>-->
@@ -28,3 +34,10 @@
     <input type="submit" value="保存" class="form-save"/>
   </form>
 </div>
+<script>
+  (function() {
+    var converter = Markdown.getSanitizingConverter();
+    var editor = new Markdown.Editor(converter);
+    editor.run();
+  })();
+</script>

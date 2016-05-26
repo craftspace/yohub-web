@@ -236,6 +236,17 @@ body.error-page, body.countdown-page {
   white-space: normal;
 }
 
+.case-detail-page .portfolio-boxes p {
+  text-align: left;
+  text-indent: 2em;
+  line-height: 22px;
+}
+
+.case-detail-page .portfolio-boxes .title,
+.case-detail-page .portfolio-boxes img {
+  margin-bottom: 30px;
+}
+
 .homepage #header,
 .homepage #wrapper,
 .homepage #footer {
@@ -359,4 +370,18 @@ body.error-page, body.countdown-page {
   .icon-boxes .icon {
     display: none !important;
   }
+}
+
+.case-page .image-link {
+  height: 200px;
+  display: table-cell !important;
+  vertical-align: middle;
+}
+
+.case-detail-page .portfolio-box img {
+  max-width: 600px;
+}
+
+.case-page .portfolio-boxes .portfolio-box {
+  height: 300px;
 }
