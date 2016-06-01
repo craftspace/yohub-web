@@ -247,6 +247,11 @@ body.error-page, body.countdown-page {
   margin-bottom: 30px;
 }
 
+.case-detail-page .portfolio-boxes .title {
+  font-size: 30px;
+  line-height: inherit;
+}
+
 .homepage #header,
 .homepage #wrapper,
 .homepage #footer {
@@ -382,6 +387,15 @@ body.error-page, body.countdown-page {
   max-width: 600px;
 }
 
+.case-detail-page .t-center p {
+  text-align: center;
+}
+
 .case-page .portfolio-boxes .portfolio-box {
   height: 300px;
+}
+
+.case-detail-page img[src*="/theme/assets/images/case/pml/"],
+.case-detail-page img[src*="/theme/assets/images/case/fengdian/"] {
+  display: block !important;
 }
